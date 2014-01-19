@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.KnowledgeTest.DataAccessLayer", "MilitaryFaculty.KnowledgeTest.DataAccessLayer\MilitaryFaculty.KnowledgeTest.DataAccessLayer.csproj", "{301C0291-D958-491E-AC69-B93EEE8089C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.KnowledgeTest.Infrastructure", "MilitaryFaculty.KnowledgeTest.Infrastructure\MilitaryFaculty.KnowledgeTest.Infrastructure.csproj", "{93A74A86-9F27-406E-8D0A-D4326DCB20A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.KnowledgeTest.Entities", "MilitaryFaculty.KnowledgeTest.Entities\MilitaryFaculty.KnowledgeTest.Entities.csproj", "{EAC11BF0-DA51-45E3-989D-DD3E9553103E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilitaryFaculty.KnowledgeTest.Services", "MilitaryFaculty.KnowledgeTest.Services\MilitaryFaculty.KnowledgeTest.Services.csproj", "{0B5A42FE-3462-473F-906F-548938847FF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UITest", "UITest\UITest.csproj", "{765986D9-9631-4785-BA86-B9D6B82A4793}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{301C0291-D958-491E-AC69-B93EEE8089C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{301C0291-D958-491E-AC69-B93EEE8089C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{301C0291-D958-491E-AC69-B93EEE8089C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{301C0291-D958-491E-AC69-B93EEE8089C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93A74A86-9F27-406E-8D0A-D4326DCB20A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93A74A86-9F27-406E-8D0A-D4326DCB20A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93A74A86-9F27-406E-8D0A-D4326DCB20A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93A74A86-9F27-406E-8D0A-D4326DCB20A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAC11BF0-DA51-45E3-989D-DD3E9553103E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAC11BF0-DA51-45E3-989D-DD3E9553103E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAC11BF0-DA51-45E3-989D-DD3E9553103E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAC11BF0-DA51-45E3-989D-DD3E9553103E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B5A42FE-3462-473F-906F-548938847FF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B5A42FE-3462-473F-906F-548938847FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B5A42FE-3462-473F-906F-548938847FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B5A42FE-3462-473F-906F-548938847FF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{765986D9-9631-4785-BA86-B9D6B82A4793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{765986D9-9631-4785-BA86-B9D6B82A4793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{765986D9-9631-4785-BA86-B9D6B82A4793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{765986D9-9631-4785-BA86-B9D6B82A4793}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
