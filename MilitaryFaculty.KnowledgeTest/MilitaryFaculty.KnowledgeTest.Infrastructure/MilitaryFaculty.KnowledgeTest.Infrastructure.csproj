@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Guard\Exceptions\ExceptionBase.cs" />
     <Compile Include="Guard\Validation\Guard.ExceptionThrowing.cs" />
+    <Compile Include="PasswordService.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Guard\Validation\Guard.Equals.cs" />
     <Compile Include="Guard\Validation\Guard.Negatives.Int32.cs" />
