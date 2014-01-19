@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using AR.EPAM.Infrastructure.Guard;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext;
-using MilitaryFaculty.KnowledgeTest.DataAccessLayer.Repositories.Helpers;
 using MilitaryFaculty.KnowledgeTest.Entities;
 using MilitaryFaculty.KnowledgeTest.Entities.Exceptions;
 using MilitaryFaculty.KnowledgeTest.Entities.InterfacesOfRepositories;

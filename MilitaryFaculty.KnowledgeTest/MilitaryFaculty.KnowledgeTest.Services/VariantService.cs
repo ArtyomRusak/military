@@ -31,7 +31,8 @@ namespace MilitaryFaculty.KnowledgeTest.Services
 
         #endregion
 
-        #region [VariantService's members]B
+
+        #region [VariantService's members]
 
         public List<Variant> GetVariantsByQuestionId(Guid questionId)
         {
