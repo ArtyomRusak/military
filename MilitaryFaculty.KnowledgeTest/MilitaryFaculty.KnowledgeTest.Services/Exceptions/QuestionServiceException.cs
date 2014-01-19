@@ -3,25 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AR.EPAM.Infrastructure.Guard.Exceptions;
 
 namespace MilitaryFaculty.KnowledgeTest.Services.Exceptions
 {
-    public class ServiceException : Exception
+    public class QuestionServiceException : ServiceException
     {
-        protected ServiceException()
+        protected QuestionServiceException()
         {
 
         }
 
-        public ServiceException(string message)
+        public QuestionServiceException(string message)
             : base(message)
         {
 
         }
 
-        public ServiceException(Exception ex)
-            : base("See inner exception", ex)
+        public QuestionServiceException(Exception ex)
+            : base(ex)
         {
 
         }

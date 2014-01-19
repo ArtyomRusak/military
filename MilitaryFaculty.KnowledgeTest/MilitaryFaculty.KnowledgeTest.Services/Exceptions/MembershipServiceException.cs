@@ -9,16 +9,21 @@ namespace MilitaryFaculty.KnowledgeTest.Services.Exceptions
 {
     public class MembershipServiceException : ServiceException
     {
-        public string ErrorMessage { get; set; }
-
-        public MembershipServiceException()
+        protected MembershipServiceException()
         {
 
         }
 
         public MembershipServiceException(string message)
+            : base(message)
         {
-            ErrorMessage = message;
+
+        }
+
+        public MembershipServiceException(Exception ex)
+            : base(ex)
+        {
+
         }
     }
 }

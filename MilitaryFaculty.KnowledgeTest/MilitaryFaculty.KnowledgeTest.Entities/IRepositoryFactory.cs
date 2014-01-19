@@ -10,8 +10,8 @@ namespace MilitaryFaculty.KnowledgeTest.Entities
 {
     public interface IRepositoryFactory
     {
-        IRepository<Student, Guid> GetStudentRepository();
-        IRepository<Variant, Guid> GetVariantRepository();
-        IRepository<Question, Guid> GetQuestionRepository();
+        IRepository<Student, int> GetStudentRepository();
+        IRepository<Variant, int> GetVariantRepository();
+        IRepository<Question, int> GetQuestionRepository();
     }
 }

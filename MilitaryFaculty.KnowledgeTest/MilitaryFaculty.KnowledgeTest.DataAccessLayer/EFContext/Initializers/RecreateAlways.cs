@@ -35,21 +35,21 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
         {
             new List<Question>()
             {
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
             }.ForEach(e => context.Questions.Add(e));
 
             context.SaveChanges();
@@ -58,11 +58,11 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
             {
                 new List<Variant>()
                 {
-                    new Variant() {Id = Guid.NewGuid(), QuestionId = question.Id, IsRight = false, Description = "Set text"},
-                    new Variant() {Id = Guid.NewGuid(), QuestionId = question.Id, IsRight = false, Description = "Set text"},
-                    new Variant() {Id = Guid.NewGuid(), QuestionId = question.Id, IsRight = false, Description = "Set text"},
-                    new Variant() {Id = Guid.NewGuid(), QuestionId = question.Id, IsRight = false, Description = "Set text"},
-                    new Variant() {Id = Guid.NewGuid(), QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
                 }.ForEach(e => context.Variants.Add(e));
             }
 

@@ -12,12 +12,6 @@ namespace MilitaryFaculty.KnowledgeTest.Services
 {
     public interface IService
     {
-        //void CreateEntity(TEntity value);
-        //void RemoveEntity(TEntity value);
-        //void UpdateEntity(TEntity value);
-        //TEntity GetEntityById(int id);
-        //IQueryable<TEntity> GetAllEntities();
-        //TestContext GetCurrentContext();
-        //void Commit();
+
     }
 }

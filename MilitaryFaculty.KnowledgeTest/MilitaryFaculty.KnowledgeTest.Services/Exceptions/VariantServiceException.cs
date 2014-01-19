@@ -8,16 +8,21 @@ namespace MilitaryFaculty.KnowledgeTest.Services.Exceptions
 {
     public class VariantServiceException : ServiceException
     {
-        public string ErrorMessage { get; set; }
-
-        public VariantServiceException()
+        protected VariantServiceException()
         {
 
         }
 
         public VariantServiceException(string message)
+            : base(message)
         {
-            ErrorMessage = message;
+
+        }
+
+        public VariantServiceException(Exception ex)
+            : base(ex)
+        {
+
         }
     }
 }

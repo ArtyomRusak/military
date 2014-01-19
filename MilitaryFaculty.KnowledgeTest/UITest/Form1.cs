@@ -36,7 +36,7 @@ namespace UITest
             try
             {
                 var student = service.AddStudent("Artyom", "Rusak", 11115);
-                context.Students.Add(new Student() {Id = Guid.NewGuid(), Name = "q", Surname = "w", Platoon = 111});
+                context.Students.Add(new Student() {Name = "q", Surname = "w", Platoon = 111});
                 //unitOfWork.Dispose();
                 unitOfWork.Commit();
                 unitOfWork.Commit();
@@ -48,7 +48,7 @@ namespace UITest
             }
             catch (MembershipServiceException exception)
             {
-                MessageBox.Show(exception.ErrorMessage);
+                MessageBox.Show(exception.Message);
             }
             catch (Exception exception)
             {

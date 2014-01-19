@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer.Repositories;
 using MilitaryFaculty.KnowledgeTest.Entities;
@@ -13,16 +9,15 @@ using MilitaryFaculty.KnowledgeTest.Entities.InterfacesOfRepositories;
 
 namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer
 {
-    public class UnitOfWork : IUnitOfWork, IRepositoryFactory
+    public class UnitOfWork : IRepositoryFactory, IUnitOfWork
     {
         private readonly TestContext _context;
-        private IRepository<Student, Guid> _studentRepository;
-        private IRepository<Question, Guid> _questionRepository;
-        private IRepository<Variant, Guid> _variantRepository;
-        private DbContextTransaction _transaction;
+        private readonly DbContextTransaction _transaction;
+        private IRepository<Student, int> _studentRepository;
+        private IRepository<Variant, int> _variantRepository;
+        private IRepository<Question, int> _questionRepository;
         private bool _disposed;
         private bool _isTransactionActive;
-
 
         public UnitOfWork(TestContext context)
         {
@@ -31,24 +26,38 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer
             _isTransactionActive = true;
         }
 
-        #region Implementation of IRepositoryFactory
+        #region Implementation of IDisposable
 
-        public IRepository<Student, Guid> GetStudentRepository()
+        public void Dispose()
         {
-            return _studentRepository ?? (_studentRepository = new Repository<Student, Guid>(_context));
-        }
+            if (_isTransactionActive)
+            {
+                try
+                {
+                    _context.SaveChanges();
+                    _transaction.Commit();
+                    _isTransactionActive = false;
+                }
+                catch (Exception e)
+                {
+                    _transaction.Rollback();
+                    _isTransactionActive = false;
 
-        public IRepository<Variant, Guid> GetVariantRepository()
-        {
-            return _variantRepository ?? (_variantRepository = new Repository<Variant, Guid>(_context));
-        }
+                    _context.Dispose();
+                    _disposed = true;
 
-        public IRepository<Question, Guid> GetQuestionRepository()
-        {
-            return _questionRepository ?? (_questionRepository = new Repository<Question, Guid>(_context));
+                    throw new RepositoryException(e);
+                }
+            }
+            if (!_disposed)
+            {
+                _context.Dispose();
+                _disposed = true;
+            }
         }
 
         #endregion
+
 
         #region Implementation of IUnitOfWork
 
@@ -66,6 +75,7 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer
             catch (Exception e)
             {
                 _transaction.Rollback();
+                _isTransactionActive = false;
                 throw new RepositoryException(e.Message);
             }
         }
@@ -75,37 +85,30 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer
             if (_isTransactionActive && !_disposed)
             {
                 _transaction.Rollback();
+                _isTransactionActive = false;
             }
         }
 
-        #endregion
-
-        #region Implementation of IDisposable
-
-        public void Dispose()
+        public void PreSave()
         {
-            if (!_disposed)
-            {
-                _context.Dispose();
-                _disposed = true;
-            }
+            _context.SaveChanges();
         }
 
         #endregion
 
-        #region [UnitOfWork's members]
-
-        public bool SetNewTransaction()
+        public IRepository<Student, int> GetStudentRepository()
         {
-            if (!_isTransactionActive && !_disposed)
-            {
-                _transaction = _context.Database.BeginTransaction();
-                _isTransactionActive = true;
-                return true;
-            }
-            return false;
+            return _studentRepository ?? (_studentRepository = new Repository<Student, int>(_context));
         }
 
-        #endregion
+        public IRepository<Variant, int> GetVariantRepository()
+        {
+            return _variantRepository ?? (_variantRepository = new Repository<Variant, int>(_context));
+        }
+
+        public IRepository<Question, int> GetQuestionRepository()
+        {
+            return _questionRepository ?? (_questionRepository = new Repository<Question, int>(_context));
+        }
     }
 }

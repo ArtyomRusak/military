@@ -12,7 +12,6 @@ namespace MilitaryFaculty.KnowledgeTest.Entities.InterfacesOfRepositories
         TEntity GetEntityById(TKey id);
         TEntity Find(Expression<Func<TEntity, bool>> predicate);
         IQueryable<TEntity> All();
-        IQueryable<TEntity> Filter(Expression<Func<TEntity, bool>> predicate); 
-        //void Save();
+        IQueryable<TEntity> Filter(Expression<Func<TEntity, bool>> predicate);
     }
 }

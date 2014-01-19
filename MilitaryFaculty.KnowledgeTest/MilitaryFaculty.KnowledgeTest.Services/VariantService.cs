@@ -13,15 +13,8 @@ namespace MilitaryFaculty.KnowledgeTest.Services
 {
     public class VariantService : IService
     {
-        #region [Private members]
-
         private IUnitOfWork _unitOfWork;
         private readonly IRepositoryFactory _factoryOfRepositries;
-
-        #endregion
-
-
-        #region [Ctor's]
 
         public VariantService(IUnitOfWork unitOfWork, IRepositoryFactory factoryOfRepositories)
         {
@@ -29,30 +22,17 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             _factoryOfRepositries = factoryOfRepositories;
         }
 
-        #endregion
-
-
-        #region [VariantService's members]
-
-        public List<Variant> GetVariantsByQuestionId(Guid questionId)
+        public List<Variant> GetVariantsByQuestionId(int questionId)
         {
             var variantRepository = _factoryOfRepositries.GetVariantRepository();
             try
             {
-                var variants = variantRepository.All().Where(e => e.QuestionId == questionId).ToList();
-
-                Guard.AgainstNullReference<VariantServiceException>(variants, "variants",
-                    "There is no variants for this question");
-
-                return variants.ToList();
+                return variantRepository.Filter(e => e.QuestionId == questionId).ToList();
             }
             catch (Exception e)
             {
                 throw new RepositoryException(e.Message);
             }
         }
-
-        #endregion
-
     }
 }

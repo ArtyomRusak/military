@@ -11,15 +11,8 @@ namespace MilitaryFaculty.KnowledgeTest.Services
 {
     public class QuestionService : IService
     {
-        #region [Private members]
-
         private IUnitOfWork _unitOfWork;
         private readonly IRepositoryFactory _factoryOfRepositries;
-
-        #endregion
-
-
-        #region [Ctor's]
 
         public QuestionService(IUnitOfWork unitOfWork, IRepositoryFactory factoryOfRepositories)
         {
@@ -27,24 +20,17 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             _factoryOfRepositries = factoryOfRepositories;
         }
 
-        #endregion
-
-        #region [QuestionService's members]
-
         public List<Question> GetAllQuestions()
         {
             var questionRepository = _factoryOfRepositries.GetQuestionRepository();
             try
             {
-                var questions = questionRepository.All().ToList();
-                return questions.ToList();
+                return questionRepository.All().ToList();
             }
             catch (Exception ex)
             {
                 throw new RepositoryException(ex.Message);
             }
         }
-
-        #endregion
     }
 }

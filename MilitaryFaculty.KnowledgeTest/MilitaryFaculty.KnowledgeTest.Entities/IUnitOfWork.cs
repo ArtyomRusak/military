@@ -11,5 +11,7 @@ namespace MilitaryFaculty.KnowledgeTest.Entities
         void Commit();
 
         void Rollback();
+
+        void PreSave();
     }
 }

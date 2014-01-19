@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using AR.EPAM.Infrastructure.Guard;
@@ -13,25 +14,14 @@ namespace MilitaryFaculty.KnowledgeTest.Services
 {
     public class MembershipService : IService
     {
-        #region [Private members]
-
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IRepositoryFactory _factoryOfRepositries;
-
-        #endregion
-
-
-        #region [Ctor's]
 
         public MembershipService(IUnitOfWork unitOfWork, IRepositoryFactory factoryOfRepositories)
         {
             _unitOfWork = unitOfWork;
             _factoryOfRepositries = factoryOfRepositories;
         }
-
-        #endregion
-
-        #region [MembershipService's members]
 
         public Student AddStudent(string name, string surname, int platoon)
         {
@@ -42,8 +32,18 @@ namespace MilitaryFaculty.KnowledgeTest.Services
                 throw new MembershipServiceException("Student exist.");
             }
 
-            student = new Student() {Id = Guid.NewGuid(), Name = name, Surname = surname, Platoon = platoon};
+            student = new Student { Name = name, Surname = surname, Platoon = platoon };
             studentRepository.Add(student);
+
+            try
+            {
+                _unitOfWork.PreSave();
+            }
+            catch (Exception e)
+            {
+                throw new ServiceException(e);
+            }
+
             return student;
         }
 
@@ -52,8 +52,7 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             var studentRepository = _factoryOfRepositries.GetStudentRepository();
             try
             {
-                var student = studentRepository.Find(e => e.Name == name && e.Surname == surname && e.Platoon == platoon);
-                return student;
+                return studentRepository.Find(e => e.Name == name && e.Surname == surname && e.Platoon == platoon);
             }
             catch (Exception e)
             {
@@ -61,13 +60,12 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             }
         }
 
-        public Student GetStudent(Guid id)
+        public Student GetStudent(int id)
         {
             var studentRepository = _factoryOfRepositries.GetStudentRepository();
             try
             {
-                var student = studentRepository.GetEntityById(id);
-                return student;
+                return studentRepository.GetEntityById(id);
             }
             catch (Exception e)
             {
@@ -88,7 +86,7 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             }
         }
 
-        public void RemoveStudent(Guid studentId)
+        public void RemoveStudent(int studentId)
         {
             var studentRepository = _factoryOfRepositries.GetStudentRepository();
             try
@@ -102,16 +100,15 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             }
         }
 
-        public void SetResult(Student student, int result)
+        public void SetResult(int studentId, int result)
         {
-            Guard.AgainstNullReference(student, "student");
-
             var studentRepository = _factoryOfRepositries.GetStudentRepository();
+
+            var student = studentRepository.GetEntityById(studentId);
+
             student.SetResult(result);
+
             UpdateStudent(student);
         }
-
-        #endregion
-
     }
 }

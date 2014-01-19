@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Runtime.InteropServices;
 using System.Transactions;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
 
@@ -44,20 +45,37 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
 
         protected void Seed(TestContext context)
         {
-            new List<Question>()
+            var questions = new List<Question>()
             {
-                new Question() {Id = Guid.NewGuid(), Description = "Edit text."}
-            }.ForEach(e => context.Questions.Add(e));
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+                new Question() {Description = "Edit text."},
+            };
+            questions.ForEach(e => context.Questions.Add(e));
 
-            foreach (var question in context.Questions)
+            context.SaveChanges();
+
+            foreach (var question in questions)
             {
                 new List<Variant>()
                 {
-                    new Variant() {Id = Guid.NewGuid(), QuestionId = question.Id, IsRight = false},
-                    new Variant() {Id = Guid.NewGuid(), QuestionId = question.Id, IsRight = false},
-                    new Variant() {Id = Guid.NewGuid(), QuestionId = question.Id, IsRight = false},
-                    new Variant() {Id = Guid.NewGuid(), QuestionId = question.Id, IsRight = false},
-                    new Variant() {Id = Guid.NewGuid(), QuestionId = question.Id, IsRight = false},
+                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
                 }.ForEach(e => context.Variants.Add(e));
             }
 

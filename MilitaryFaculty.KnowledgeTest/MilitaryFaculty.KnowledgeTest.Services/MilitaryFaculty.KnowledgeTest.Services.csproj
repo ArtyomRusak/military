@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\MembershipServiceException.cs" />
+    <Compile Include="Exceptions\QuestionServiceException.cs" />
     <Compile Include="Exceptions\ServiceException.cs" />
     <Compile Include="Exceptions\VariantServiceException.cs" />
     <Compile Include="MembershipService.cs" />

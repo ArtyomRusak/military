@@ -2,11 +2,11 @@
 
 namespace MilitaryFaculty.KnowledgeTest.Entities.Entities
 {
-    public class Variant : Entity<Guid>
+    public class Variant : Entity<int>
     {
-        public Question Question { get; set; }
-        public Guid QuestionId { get; set; }
         public string Description { get; set; }
         public bool IsRight { get; set; }
+        public virtual Question Question { get; set; }
+        public int QuestionId { get; set; }
     }
 }
