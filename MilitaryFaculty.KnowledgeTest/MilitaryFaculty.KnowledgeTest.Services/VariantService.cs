@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AR.EPAM.Infrastructure.Guard;
 using MilitaryFaculty.KnowledgeTest.Entities;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
 using MilitaryFaculty.KnowledgeTest.Entities.Exceptions;
-using MilitaryFaculty.KnowledgeTest.Services.Exceptions;
 
 namespace MilitaryFaculty.KnowledgeTest.Services
 {

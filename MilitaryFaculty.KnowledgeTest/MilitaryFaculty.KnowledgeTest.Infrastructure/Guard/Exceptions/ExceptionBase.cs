@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace YP.ToolKit.System.Exceptions
+namespace MilitaryFaculty.KnowledgeTest.Infrastructure.Guard.Exceptions
 {
     /// <summary>
     /// Represnets base application functionality of an exception

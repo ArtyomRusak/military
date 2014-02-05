@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using MilitaryFaculty.KnowledgeTest.Infrastructure.Guard.Exceptions;
 using YP.ToolKit.System;
-using YP.ToolKit.System.Exceptions;
 
-namespace AR.EPAM.Infrastructure.Guard
+namespace MilitaryFaculty.KnowledgeTest.Infrastructure.Guard.Validation
 {
     /// <summary>
     /// Represents guardian for common used validation rules

@@ -2,34 +2,23 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using AR.EPAM.Infrastructure.Guard;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext;
 using MilitaryFaculty.KnowledgeTest.Entities;
 using MilitaryFaculty.KnowledgeTest.Entities.Exceptions;
 using MilitaryFaculty.KnowledgeTest.Entities.InterfacesOfRepositories;
+using MilitaryFaculty.KnowledgeTest.Infrastructure.Guard.Validation;
 
 namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.Repositories
 {
     public class Repository<TEntity, TKey> : Repository, IRepository<TEntity, TKey> where TEntity : Entity
     {
-        #region [Private members]
-
         private readonly DbSet<TEntity> _entities;
-
-        #endregion
-
-
-        #region [Ctor's]
 
         public Repository(TestContext context)
             : base(context)
         {
             _entities = Context.Set<TEntity>();
         }
-
-        #endregion
-
-        #region Implementation of IRepository<TEntity,in TKey>
 
         public void Add(TEntity value)
         {
@@ -92,7 +81,5 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.Repositories
 
             return _entities.Where(predicate);
         }
-
-        #endregion
     }
 }

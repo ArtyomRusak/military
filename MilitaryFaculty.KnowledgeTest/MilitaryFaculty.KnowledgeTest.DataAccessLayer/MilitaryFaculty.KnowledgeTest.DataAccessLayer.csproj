@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AR.EPAM.Infrastructure">
-      <HintPath>..\..\..\epam_course\AR.EPAM\AR.EPAM.Infrastructure\bin\Debug\AR.EPAM.Infrastructure.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
@@ -77,6 +74,10 @@
     <ProjectReference Include="..\MilitaryFaculty.KnowledgeTest.Entities\MilitaryFaculty.KnowledgeTest.Entities.csproj">
       <Project>{eac11bf0-da51-45e3-989d-dd3e9553103e}</Project>
       <Name>MilitaryFaculty.KnowledgeTest.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.KnowledgeTest.Infrastructure\MilitaryFaculty.KnowledgeTest.Infrastructure.csproj">
+      <Project>{93A74A86-9F27-406E-8D0A-D4326DCB20A1}</Project>
+      <Name>MilitaryFaculty.KnowledgeTest.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
