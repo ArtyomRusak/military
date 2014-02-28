@@ -16,6 +16,7 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer
         private IRepository<Student, int> _studentRepository;
         private IRepository<Variant, int> _variantRepository;
         private IRepository<Question, int> _questionRepository;
+        private IRepository<Result, int> _resultRepository; 
         private bool _disposed;
         private bool _isTransactionActive;
 
@@ -25,8 +26,6 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer
             _transaction = _context.Database.BeginTransaction();
             _isTransactionActive = true;
         }
-
-        #region Implementation of IDisposable
 
         public void Dispose()
         {
@@ -55,11 +54,6 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer
                 _disposed = true;
             }
         }
-
-        #endregion
-
-
-        #region Implementation of IUnitOfWork
 
         public void Commit()
         {
@@ -94,8 +88,6 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer
             _context.SaveChanges();
         }
 
-        #endregion
-
         public IRepository<Student, int> GetStudentRepository()
         {
             return _studentRepository ?? (_studentRepository = new Repository<Student, int>(_context));
@@ -109,6 +101,11 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer
         public IRepository<Question, int> GetQuestionRepository()
         {
             return _questionRepository ?? (_questionRepository = new Repository<Question, int>(_context));
+        }
+
+        public IRepository<Result, int> GetResultRepository()
+        {
+            return _resultRepository ?? (_resultRepository = new Repository<Result, int>(_context));
         }
     }
 }

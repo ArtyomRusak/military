@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EFContext\Configurations\QuestionConfiguration.cs" />
+    <Compile Include="EFContext\Configurations\ResultConfiguration.cs" />
     <Compile Include="EFContext\Configurations\SecurityConfiguration.cs" />
     <Compile Include="EFContext\Configurations\StudentConfiguration.cs" />
     <Compile Include="EFContext\Configurations\VariantConfiguration.cs" />

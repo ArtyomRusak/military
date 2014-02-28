@@ -13,5 +13,6 @@ namespace MilitaryFaculty.KnowledgeTest.Entities
         IRepository<Student, int> GetStudentRepository();
         IRepository<Variant, int> GetVariantRepository();
         IRepository<Question, int> GetQuestionRepository();
+        IRepository<Result, int> GetResultRepository();
     }
 }

@@ -10,8 +10,6 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
 {
     public class RecreateAlways : IDatabaseInitializer<TestContext>
     {
-        #region Implementation of IDatabaseInitializer<in TestContext>
-
         public void InitializeDatabase(TestContext context)
         {
             context.Database.Delete();
@@ -27,29 +25,25 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
             }
         }
 
-        #endregion
-
-        #region [RecreateAlways's members]
-
         protected void Seed(TestContext context)
         {
             new List<Question>()
             {
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
             }.ForEach(e => context.Questions.Add(e));
 
             context.SaveChanges();
@@ -68,7 +62,5 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
 
             context.SaveChanges();
         }
-
-        #endregion
     }
 }

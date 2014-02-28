@@ -11,6 +11,7 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Configurations
             Property(e => e.Name).HasMaxLength(20).IsRequired();
             Property(e => e.Surname).HasMaxLength(40).IsRequired();
             Property(e => e.Platoon).IsRequired();
+            HasMany(e => e.Results).WithRequired(e => e.Student).HasForeignKey(e => e.StudentId);
         }
     }
 }

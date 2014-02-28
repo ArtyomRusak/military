@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Result.cs" />
     <Compile Include="Entities\Security.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Entity`1.cs" />

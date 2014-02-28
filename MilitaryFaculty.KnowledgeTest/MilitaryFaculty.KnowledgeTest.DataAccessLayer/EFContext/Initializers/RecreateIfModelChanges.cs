@@ -9,8 +9,6 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
 {
     public class RecreateIfModelChanges : IDatabaseInitializer<TestContext>
     {
-        #region Implementation of IDatabaseInitializer<in TestContext>
-
         public void InitializeDatabase(TestContext context)
         {
             bool databaseExists;
@@ -38,10 +36,6 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
                 throw;
             }
         }
-
-        #endregion
-
-        #region [RecreateIfModelChanges's members]
 
         protected void Seed(TestContext context)
         {
@@ -81,7 +75,5 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
 
             context.SaveChanges();
         }
-
-        #endregion
     }
 }

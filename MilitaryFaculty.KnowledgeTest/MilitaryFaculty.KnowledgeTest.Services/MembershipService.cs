@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using MilitaryFaculty.KnowledgeTest.Entities;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
+using MilitaryFaculty.KnowledgeTest.Infrastructure.Guard.Validation;
 using MilitaryFaculty.KnowledgeTest.Services.Exceptions;
 
 namespace MilitaryFaculty.KnowledgeTest.Services
@@ -12,6 +15,9 @@ namespace MilitaryFaculty.KnowledgeTest.Services
 
         public MembershipService(IUnitOfWork unitOfWork, IRepositoryFactory factoryOfRepositories)
         {
+            Guard.AgainstNullReference(unitOfWork, "unitOfWork");
+            Guard.AgainstNullReference(factoryOfRepositories, "factoryOfRepositories");
+
             _unitOfWork = unitOfWork;
             _factoryOfRepositries = factoryOfRepositories;
         }
@@ -53,7 +59,7 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             }
         }
 
-        public Student GetStudent(int id)
+        public Student GetStudentById(int id)
         {
             var studentRepository = _factoryOfRepositries.GetStudentRepository();
             try
@@ -84,7 +90,7 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             var studentRepository = _factoryOfRepositries.GetStudentRepository();
             try
             {
-                var student = GetStudent(studentId);
+                var student = GetStudentById(studentId);
                 studentRepository.Remove(student);
             }
             catch (Exception e)
@@ -93,15 +99,24 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             }
         }
 
-        public void SetResult(int studentId, int result)
+        public void SetResult(int studentId, double mark)
+        {
+            var studentRepository = _factoryOfRepositries.GetStudentRepository();
+            var resultRepository = _factoryOfRepositries.GetResultRepository();
+
+            var student = studentRepository.GetEntityById(studentId);
+            var result = new Result { Mark = mark, Date = DateTime.Now, StudentId = student.Id };
+            resultRepository.Add(result);
+
+            UpdateStudent(student);
+        }
+
+        public List<Result> GetResultsOfStudent(int studentId)
         {
             var studentRepository = _factoryOfRepositries.GetStudentRepository();
 
-            var student = studentRepository.GetEntityById(studentId);
-
-            student.SetResult(result);
-
-            UpdateStudent(student);
+            var student = GetStudentById(studentId);
+            return student.Results.ToList();
         }
     }
 }

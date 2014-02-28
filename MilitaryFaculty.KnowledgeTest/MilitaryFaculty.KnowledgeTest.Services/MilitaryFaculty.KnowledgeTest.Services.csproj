@@ -69,6 +69,10 @@
       <Project>{eac11bf0-da51-45e3-989d-dd3e9553103e}</Project>
       <Name>MilitaryFaculty.KnowledgeTest.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MilitaryFaculty.KnowledgeTest.Infrastructure\MilitaryFaculty.KnowledgeTest.Infrastructure.csproj">
+      <Project>{93A74A86-9F27-406E-8D0A-D4326DCB20A1}</Project>
+      <Name>MilitaryFaculty.KnowledgeTest.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

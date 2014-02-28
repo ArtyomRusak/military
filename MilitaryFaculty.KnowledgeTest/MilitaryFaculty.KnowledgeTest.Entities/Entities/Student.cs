@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MilitaryFaculty.KnowledgeTest.Entities.Entities
 {
@@ -7,11 +9,6 @@ namespace MilitaryFaculty.KnowledgeTest.Entities.Entities
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Platoon { get; set; }
-        public int Result { get; set; }
-
-        public void SetResult(int result)
-        {
-            Result = result;
-        }
+        public virtual ICollection<Result> Results { get; set; }
     }
 }
