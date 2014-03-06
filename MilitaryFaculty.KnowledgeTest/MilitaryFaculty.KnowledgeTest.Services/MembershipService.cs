@@ -113,8 +113,6 @@ namespace MilitaryFaculty.KnowledgeTest.Services
 
         public List<Result> GetResultsOfStudent(int studentId)
         {
-            var studentRepository = _factoryOfRepositries.GetStudentRepository();
-
             var student = GetStudentById(studentId);
             return student.Results.ToList();
         }
