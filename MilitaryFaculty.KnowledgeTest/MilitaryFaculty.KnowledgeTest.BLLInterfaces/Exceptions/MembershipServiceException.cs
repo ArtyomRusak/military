@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MilitaryFaculty.KnowledgeTest.Services.Exceptions
+namespace MilitaryFaculty.KnowledgeTest.BLLInterfaces.Exceptions
 {
     public class MembershipServiceException : ServiceException
     {

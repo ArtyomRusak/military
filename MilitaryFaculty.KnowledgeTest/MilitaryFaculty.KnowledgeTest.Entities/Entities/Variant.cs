@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MilitaryFaculty.KnowledgeTest.Entities.Entities
+﻿namespace MilitaryFaculty.KnowledgeTest.Entities.Entities
 {
     public class Variant : Entity<int>
     {

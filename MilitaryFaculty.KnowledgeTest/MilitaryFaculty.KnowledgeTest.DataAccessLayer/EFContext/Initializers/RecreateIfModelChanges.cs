@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Runtime.InteropServices;
 using System.Transactions;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
+using MilitaryFaculty.KnowledgeTest.Infrastructure;
 
 namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
 {
@@ -72,6 +72,14 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
                     new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
                 }.ForEach(e => context.Variants.Add(e));
             }
+
+            context.SaveChanges();
+
+            var passwordSalt = DateTime.Now.ToString();
+            var plainText = "638638" + passwordSalt;
+            var password = PasswordService.CalculateHash(plainText);
+            var security = new Security {Password = password, PasswordSalt = passwordSalt};
+            context.Security.Add(security);
 
             context.SaveChanges();
         }

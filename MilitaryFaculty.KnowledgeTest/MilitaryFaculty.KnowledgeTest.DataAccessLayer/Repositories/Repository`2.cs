@@ -2,10 +2,10 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using MilitaryFaculty.KnowledgeTest.DALInterfaces;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext;
 using MilitaryFaculty.KnowledgeTest.Entities;
 using MilitaryFaculty.KnowledgeTest.Entities.Exceptions;
-using MilitaryFaculty.KnowledgeTest.Entities.InterfacesOfRepositories;
 using MilitaryFaculty.KnowledgeTest.Infrastructure.Guard.Validation;
 
 namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.Repositories

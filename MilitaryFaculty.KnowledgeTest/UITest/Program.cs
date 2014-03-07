@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MilitaryFaculty.KnowledgeTest.Presentation;
+using MilitaryFaculty.KnowledgeTest.Presentation.Presenters;
+using MilitaryFaculty.KnowledgeTest.Presentation.Views;
 
 namespace UITest
 {
@@ -16,7 +16,14 @@ namespace UITest
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            var controller = new ApplicationController(new AutofacInjectAdapter())
+                .RegisterView<ILoginView, LoginForm>()
+                .RegisterService<LoginPresenter>()
+                .RegisterInstance(new ApplicationContext())
+                .DoneBuilding();
+
+            controller.Run<LoginPresenter>();
         }
     }
 }

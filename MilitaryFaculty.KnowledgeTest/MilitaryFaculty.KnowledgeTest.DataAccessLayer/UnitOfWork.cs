@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Data.Entity;
+using MilitaryFaculty.KnowledgeTest.DALInterfaces;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer.Repositories;
-using MilitaryFaculty.KnowledgeTest.Entities;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
 using MilitaryFaculty.KnowledgeTest.Entities.Exceptions;
-using MilitaryFaculty.KnowledgeTest.Entities.InterfacesOfRepositories;
 
 namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer
 {
@@ -16,7 +15,8 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer
         private IRepository<Student, int> _studentRepository;
         private IRepository<Variant, int> _variantRepository;
         private IRepository<Question, int> _questionRepository;
-        private IRepository<Result, int> _resultRepository; 
+        private IRepository<Result, int> _resultRepository;
+        private IRepository<Security, int> _securityRepository;
         private bool _disposed;
         private bool _isTransactionActive;
 
@@ -106,6 +106,11 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer
         public IRepository<Result, int> GetResultRepository()
         {
             return _resultRepository ?? (_resultRepository = new Repository<Result, int>(_context));
+        }
+
+        public IRepository<Security, int> GetSecurityRepository()
+        {
+            return _securityRepository ?? (_securityRepository = new Repository<Security, int>(_context));
         }
     }
 }

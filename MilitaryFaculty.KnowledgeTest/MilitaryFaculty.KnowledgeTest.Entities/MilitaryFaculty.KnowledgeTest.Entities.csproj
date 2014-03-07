@@ -44,10 +44,6 @@
     <Compile Include="Entity.cs" />
     <Compile Include="Entity`1.cs" />
     <Compile Include="Exceptions\RepositoryException.cs" />
-    <Compile Include="InterfacesOfRepositories\IRepository.cs" />
-    <Compile Include="InterfacesOfRepositories\IRepository`2.cs" />
-    <Compile Include="IRepositoryFactory.cs" />
-    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Question.cs" />
     <Compile Include="Entities\Student.cs" />
