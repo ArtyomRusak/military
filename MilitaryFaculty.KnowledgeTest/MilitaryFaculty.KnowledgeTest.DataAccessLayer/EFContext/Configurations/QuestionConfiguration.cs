@@ -8,7 +8,7 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Configurations
         public QuestionConfiguration()
         {
             HasKey(e => e.Id);
-            Property(e => e.Description).IsRequired();
+            Property(e => e.Description).IsRequired().HasMaxLength(300);
             HasMany(e => e.Variants).WithRequired(e => e.Question).HasForeignKey(e => e.QuestionId);
         }
     }

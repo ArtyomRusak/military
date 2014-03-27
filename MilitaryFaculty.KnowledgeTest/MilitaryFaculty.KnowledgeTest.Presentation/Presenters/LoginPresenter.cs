@@ -35,9 +35,15 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 
             if (_membershipService.LoginAsTeacher(password))
             {
+<<<<<<< HEAD
+                Controller.Run<MainTeacherPresenter>();
+                unitOfWork.Commit();
+                View.Close();
+=======
                 //TODO: Go to main form
                 View.ShowError("Good");
                 unitOfWork.Commit();
+>>>>>>> 1210192a112bdd229830e2e4517a2f04ce0f2f8a
             }
             else
             {
@@ -48,7 +54,11 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 
         public void LoginAsStudent()
         {
+<<<<<<< HEAD
+            View.ShowError("Go to student form");
+=======
             View.ShowError("Got to student form");
+>>>>>>> 1210192a112bdd229830e2e4517a2f04ce0f2f8a
         }
 
         public void Close()

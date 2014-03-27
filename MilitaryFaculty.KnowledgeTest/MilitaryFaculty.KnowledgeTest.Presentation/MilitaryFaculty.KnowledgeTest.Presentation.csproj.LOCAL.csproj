@@ -58,25 +58,17 @@
     <Compile Include="ControllerandContainer\IContainer.cs" />
     <Compile Include="PresenterInterfaces\IPresenter.cs" />
     <Compile Include="PresenterInterfaces\IPresenter`1.cs" />
-<<<<<<< HEAD
     <Compile Include="Presenters\AddQuestionPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
     <Compile Include="Presenters\MainTeacherPresenter.cs" />
-=======
-    <Compile Include="Presenters\LoginPresenter.cs" />
->>>>>>> 1210192a112bdd229830e2e4517a2f04ce0f2f8a
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Views\IAddQuestionView.cs" />
     <Compile Include="Views\ILoginView.cs" />
     <Compile Include="Views\IMainTacherView.cs" />
-=======
-    <Compile Include="Views\ILoginView.cs" />
->>>>>>> 1210192a112bdd229830e2e4517a2f04ce0f2f8a
     <Compile Include="Views\IView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
