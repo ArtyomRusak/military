@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MilitaryFaculty.KnowledgeTest.Entities;
+using MilitaryFaculty.KnowledgeTest.BLLInterfaces;
+using MilitaryFaculty.KnowledgeTest.BLLInterfaces.Exceptions;
+using MilitaryFaculty.KnowledgeTest.DALInterfaces;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
 using MilitaryFaculty.KnowledgeTest.Entities.Exceptions;
 using MilitaryFaculty.KnowledgeTest.Infrastructure.Guard.Validation;
-using MilitaryFaculty.KnowledgeTest.Services.Exceptions;
 
 namespace MilitaryFaculty.KnowledgeTest.Services
 {
-    public class QuestionService : IService
+    public class QuestionService : IQuestionService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepositoryFactory _factoryOfRepositries;
@@ -72,10 +71,9 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             }
         }
 
-        public void RemoveQuestion(int questionId)
+        public void RemoveQuestion(Question question)
         {
             var questionRepository = _factoryOfRepositries.GetQuestionRepository();
-            var question = questionRepository.GetEntityById(questionId);
             questionRepository.Remove(question);
         }
 

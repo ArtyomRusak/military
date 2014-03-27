@@ -1,5 +1,5 @@
-﻿using MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext;
-using MilitaryFaculty.KnowledgeTest.Entities.InterfacesOfRepositories;
+﻿using MilitaryFaculty.KnowledgeTest.DALInterfaces;
+using MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext;
 
 namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.Repositories
 {

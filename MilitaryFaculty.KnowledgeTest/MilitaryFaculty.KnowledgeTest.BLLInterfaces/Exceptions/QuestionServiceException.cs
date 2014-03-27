@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MilitaryFaculty.KnowledgeTest.Services.Exceptions
+namespace MilitaryFaculty.KnowledgeTest.BLLInterfaces.Exceptions
 {
     public class QuestionServiceException : ServiceException
     {

@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MilitaryFaculty.KnowledgeTest.Entities;
+using MilitaryFaculty.KnowledgeTest.BLLInterfaces;
+using MilitaryFaculty.KnowledgeTest.BLLInterfaces.Exceptions;
+using MilitaryFaculty.KnowledgeTest.DALInterfaces;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
 using MilitaryFaculty.KnowledgeTest.Entities.Exceptions;
 using MilitaryFaculty.KnowledgeTest.Infrastructure.Guard.Validation;
-using MilitaryFaculty.KnowledgeTest.Services.Exceptions;
 
 namespace MilitaryFaculty.KnowledgeTest.Services
 {
-    public class VariantService : IService
+    public class VariantService : IVariantService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepositoryFactory _factoryOfRepositries;
@@ -23,7 +24,7 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             _factoryOfRepositries = factoryOfRepositories;
         }
 
-        public void AddVariantToQuestion(string description, bool isRight, int questionId)
+        public Variant AddVariantToQuestion(string description, bool isRight, int questionId)
         {
             var variantRepository = _factoryOfRepositries.GetVariantRepository();
 
@@ -38,6 +39,8 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             {
                 throw new VariantServiceException(e);
             }
+
+            return variant;
         }
 
         public void UpdateVariant(Variant variant)
@@ -46,10 +49,9 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             variantRepository.Update(variant);
         }
 
-        public void RemoveVariant(int variantId)
+        public void RemoveVariant(Variant variant)
         {
             var variantRepository = _factoryOfRepositries.GetVariantRepository();
-            var variant = variantRepository.GetEntityById(variantId);
             variantRepository.Remove(variant);
         }
 

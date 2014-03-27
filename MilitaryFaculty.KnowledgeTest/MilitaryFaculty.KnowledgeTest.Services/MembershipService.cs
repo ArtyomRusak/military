@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MilitaryFaculty.KnowledgeTest.Entities;
+using MilitaryFaculty.KnowledgeTest.BLLInterfaces;
+using MilitaryFaculty.KnowledgeTest.BLLInterfaces.Exceptions;
+using MilitaryFaculty.KnowledgeTest.DALInterfaces;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
+using MilitaryFaculty.KnowledgeTest.Infrastructure;
 using MilitaryFaculty.KnowledgeTest.Infrastructure.Guard.Validation;
-using MilitaryFaculty.KnowledgeTest.Services.Exceptions;
 
 namespace MilitaryFaculty.KnowledgeTest.Services
 {
-    public class MembershipService : IService
+    public class MembershipService : IMembershipService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepositoryFactory _factoryOfRepositries;
@@ -59,12 +61,12 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             }
         }
 
-        public Student GetStudentById(int id)
+        public Student GetStudentById(int studentId)
         {
             var studentRepository = _factoryOfRepositries.GetStudentRepository();
             try
             {
-                return studentRepository.GetEntityById(id);
+                return studentRepository.GetEntityById(studentId);
             }
             catch (Exception e)
             {
@@ -85,12 +87,11 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             }
         }
 
-        public void RemoveStudent(int studentId)
+        public void RemoveStudent(Student student)
         {
             var studentRepository = _factoryOfRepositries.GetStudentRepository();
             try
             {
-                var student = GetStudentById(studentId);
                 studentRepository.Remove(student);
             }
             catch (Exception e)
@@ -101,10 +102,9 @@ namespace MilitaryFaculty.KnowledgeTest.Services
 
         public void SetResult(int studentId, double mark)
         {
-            var studentRepository = _factoryOfRepositries.GetStudentRepository();
             var resultRepository = _factoryOfRepositries.GetResultRepository();
 
-            var student = studentRepository.GetEntityById(studentId);
+            var student = GetStudentById(studentId);
             var result = new Result { Mark = mark, Date = DateTime.Now, StudentId = student.Id };
             resultRepository.Add(result);
 
@@ -115,6 +115,23 @@ namespace MilitaryFaculty.KnowledgeTest.Services
         {
             var student = GetStudentById(studentId);
             return student.Results.ToList();
+        }
+
+        public bool LoginAsTeacher(string password)
+        {
+            var securityRepository = _factoryOfRepositries.GetSecurityRepository();
+
+            try
+            {
+                var security = securityRepository.All().ToList().First();
+                var plainText = password + security.PasswordSalt;
+                var hash = PasswordService.CalculateHash(plainText);
+                return hash == security.Password;
+            }
+            catch (Exception ex)
+            {
+                throw new MembershipServiceException(ex);
+            }
         }
     }
 }
