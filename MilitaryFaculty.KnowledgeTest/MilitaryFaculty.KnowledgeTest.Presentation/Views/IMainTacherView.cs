@@ -9,5 +9,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
     public interface IMainTeacherView : IView
     {
         event Action AddQuestion;
+        event Action TestButton;
+        event Action ContextDispose;
     }
 }

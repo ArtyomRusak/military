@@ -8,12 +8,10 @@ using MilitaryFaculty.KnowledgeTest.Presentation.PresenterInterfaces;
 
 namespace MilitaryFaculty.KnowledgeTest.Presentation
 {
-    public abstract class BasePresenter<TView, TArg> : IPresenter<TArg> where TView : IView
+    public abstract class BasePresenter<TView, TArg> : BasePresenter<TView>, IPresenter<TArg> where TView : IView
     {
-        public TView View { get; set; }
-        public IApplicationController Controller { get; set; }
-
         protected BasePresenter(IApplicationController controller, TView view)
+            : base(controller, view)
         {
             Controller = controller;
             View = view;

@@ -1,6 +1,6 @@
 ﻿namespace UITest
 {
-    partial class AddQuestionForm
+    partial class AddEditEditQuestionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,11 +32,6 @@
             this.lblDescription = new System.Windows.Forms.Label();
             this.tbxDescrition = new System.Windows.Forms.TextBox();
             this.cmbxCounters = new System.Windows.Forms.ComboBox();
-            this.lblVariant1 = new System.Windows.Forms.Label();
-            this.lblVariant2 = new System.Windows.Forms.Label();
-            this.lblVariant4 = new System.Windows.Forms.Label();
-            this.lblVariant3 = new System.Windows.Forms.Label();
-            this.lblVariant5 = new System.Windows.Forms.Label();
             this.tbxVariant1 = new System.Windows.Forms.TextBox();
             this.tbxVariant2 = new System.Windows.Forms.TextBox();
             this.tbxVariant3 = new System.Windows.Forms.TextBox();
@@ -47,6 +42,8 @@
             this.chbxVariant3 = new System.Windows.Forms.CheckBox();
             this.chbxVariant4 = new System.Windows.Forms.CheckBox();
             this.chbxVariant5 = new System.Windows.Forms.CheckBox();
+            this.btnSaveQuestion = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddQuestion
@@ -70,7 +67,7 @@
             // 
             // tbxDescrition
             // 
-            this.tbxDescrition.Location = new System.Drawing.Point(12, 69);
+            this.tbxDescrition.Location = new System.Drawing.Point(12, 56);
             this.tbxDescrition.Multiline = true;
             this.tbxDescrition.Name = "tbxDescrition";
             this.tbxDescrition.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -86,56 +83,6 @@
             this.cmbxCounters.Size = new System.Drawing.Size(121, 21);
             this.cmbxCounters.TabIndex = 3;
             this.cmbxCounters.SelectedIndexChanged += new System.EventHandler(this.cmbxCounters_SelectedIndexChanged);
-            // 
-            // lblVariant1
-            // 
-            this.lblVariant1.AutoSize = true;
-            this.lblVariant1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblVariant1.Location = new System.Drawing.Point(460, 69);
-            this.lblVariant1.Name = "lblVariant1";
-            this.lblVariant1.Size = new System.Drawing.Size(77, 16);
-            this.lblVariant1.TabIndex = 4;
-            this.lblVariant1.Text = "Вариант 1:";
-            // 
-            // lblVariant2
-            // 
-            this.lblVariant2.AutoSize = true;
-            this.lblVariant2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblVariant2.Location = new System.Drawing.Point(460, 133);
-            this.lblVariant2.Name = "lblVariant2";
-            this.lblVariant2.Size = new System.Drawing.Size(77, 16);
-            this.lblVariant2.TabIndex = 5;
-            this.lblVariant2.Text = "Вариант 2:";
-            // 
-            // lblVariant4
-            // 
-            this.lblVariant4.AutoSize = true;
-            this.lblVariant4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblVariant4.Location = new System.Drawing.Point(460, 259);
-            this.lblVariant4.Name = "lblVariant4";
-            this.lblVariant4.Size = new System.Drawing.Size(77, 16);
-            this.lblVariant4.TabIndex = 6;
-            this.lblVariant4.Text = "Вариант 4:";
-            // 
-            // lblVariant3
-            // 
-            this.lblVariant3.AutoSize = true;
-            this.lblVariant3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblVariant3.Location = new System.Drawing.Point(460, 200);
-            this.lblVariant3.Name = "lblVariant3";
-            this.lblVariant3.Size = new System.Drawing.Size(77, 16);
-            this.lblVariant3.TabIndex = 7;
-            this.lblVariant3.Text = "Вариант 3:";
-            // 
-            // lblVariant5
-            // 
-            this.lblVariant5.AutoSize = true;
-            this.lblVariant5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblVariant5.Location = new System.Drawing.Point(460, 316);
-            this.lblVariant5.Name = "lblVariant5";
-            this.lblVariant5.Size = new System.Drawing.Size(77, 16);
-            this.lblVariant5.TabIndex = 8;
-            this.lblVariant5.Text = "Вариант 5:";
             // 
             // tbxVariant1
             // 
@@ -185,53 +132,84 @@
             // chbxVariant1
             // 
             this.chbxVariant1.AutoSize = true;
-            this.chbxVariant1.Location = new System.Drawing.Point(427, 71);
+            this.chbxVariant1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chbxVariant1.Location = new System.Drawing.Point(427, 65);
             this.chbxVariant1.Name = "chbxVariant1";
-            this.chbxVariant1.Size = new System.Drawing.Size(15, 14);
+            this.chbxVariant1.Size = new System.Drawing.Size(96, 20);
             this.chbxVariant1.TabIndex = 14;
+            this.chbxVariant1.Text = "Вариант 1:";
             this.chbxVariant1.UseVisualStyleBackColor = true;
             // 
             // chbxVariant2
             // 
             this.chbxVariant2.AutoSize = true;
-            this.chbxVariant2.Location = new System.Drawing.Point(427, 133);
+            this.chbxVariant2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chbxVariant2.Location = new System.Drawing.Point(427, 121);
             this.chbxVariant2.Name = "chbxVariant2";
-            this.chbxVariant2.Size = new System.Drawing.Size(15, 14);
+            this.chbxVariant2.Size = new System.Drawing.Size(96, 20);
             this.chbxVariant2.TabIndex = 15;
+            this.chbxVariant2.Text = "Вариант 2:";
             this.chbxVariant2.UseVisualStyleBackColor = true;
             // 
             // chbxVariant3
             // 
             this.chbxVariant3.AutoSize = true;
-            this.chbxVariant3.Location = new System.Drawing.Point(427, 202);
+            this.chbxVariant3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chbxVariant3.Location = new System.Drawing.Point(427, 187);
             this.chbxVariant3.Name = "chbxVariant3";
-            this.chbxVariant3.Size = new System.Drawing.Size(15, 14);
+            this.chbxVariant3.Size = new System.Drawing.Size(96, 20);
             this.chbxVariant3.TabIndex = 16;
+            this.chbxVariant3.Text = "Вариант 3:";
             this.chbxVariant3.UseVisualStyleBackColor = true;
             // 
             // chbxVariant4
             // 
             this.chbxVariant4.AutoSize = true;
-            this.chbxVariant4.Location = new System.Drawing.Point(427, 261);
+            this.chbxVariant4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chbxVariant4.Location = new System.Drawing.Point(427, 249);
             this.chbxVariant4.Name = "chbxVariant4";
-            this.chbxVariant4.Size = new System.Drawing.Size(15, 14);
+            this.chbxVariant4.Size = new System.Drawing.Size(96, 20);
             this.chbxVariant4.TabIndex = 17;
+            this.chbxVariant4.Text = "Вариант 4:";
             this.chbxVariant4.UseVisualStyleBackColor = true;
             // 
             // chbxVariant5
             // 
             this.chbxVariant5.AutoSize = true;
-            this.chbxVariant5.Location = new System.Drawing.Point(427, 316);
+            this.chbxVariant5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chbxVariant5.Location = new System.Drawing.Point(427, 306);
             this.chbxVariant5.Name = "chbxVariant5";
-            this.chbxVariant5.Size = new System.Drawing.Size(15, 14);
+            this.chbxVariant5.Size = new System.Drawing.Size(96, 20);
             this.chbxVariant5.TabIndex = 18;
+            this.chbxVariant5.Text = "Вариант 5:";
             this.chbxVariant5.UseVisualStyleBackColor = true;
             // 
-            // AddQuestionForm
+            // btnSaveQuestion
+            // 
+            this.btnSaveQuestion.Location = new System.Drawing.Point(463, 383);
+            this.btnSaveQuestion.Name = "btnSaveQuestion";
+            this.btnSaveQuestion.Size = new System.Drawing.Size(172, 44);
+            this.btnSaveQuestion.TabIndex = 19;
+            this.btnSaveQuestion.Text = "Сохранить";
+            this.btnSaveQuestion.UseVisualStyleBackColor = true;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(12, 426);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(177, 28);
+            this.btnEdit.TabIndex = 20;
+            this.btnEdit.Text = "Редактировать";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // AddEditEditQuestionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1042, 467);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnSaveQuestion);
             this.Controls.Add(this.chbxVariant5);
             this.Controls.Add(this.chbxVariant4);
             this.Controls.Add(this.chbxVariant3);
@@ -242,16 +220,11 @@
             this.Controls.Add(this.tbxVariant3);
             this.Controls.Add(this.tbxVariant2);
             this.Controls.Add(this.tbxVariant1);
-            this.Controls.Add(this.lblVariant5);
-            this.Controls.Add(this.lblVariant3);
-            this.Controls.Add(this.lblVariant4);
-            this.Controls.Add(this.lblVariant2);
-            this.Controls.Add(this.lblVariant1);
             this.Controls.Add(this.cmbxCounters);
             this.Controls.Add(this.tbxDescrition);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.btnAddQuestion);
-            this.Name = "AddQuestionForm";
+            this.Name = "AddEditEditQuestionForm";
             this.Text = "AddQuestionForm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -264,11 +237,6 @@
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.TextBox tbxDescrition;
         private System.Windows.Forms.ComboBox cmbxCounters;
-        private System.Windows.Forms.Label lblVariant1;
-        private System.Windows.Forms.Label lblVariant2;
-        private System.Windows.Forms.Label lblVariant4;
-        private System.Windows.Forms.Label lblVariant3;
-        private System.Windows.Forms.Label lblVariant5;
         private System.Windows.Forms.TextBox tbxVariant1;
         private System.Windows.Forms.TextBox tbxVariant2;
         private System.Windows.Forms.TextBox tbxVariant3;
@@ -279,5 +247,7 @@
         private System.Windows.Forms.CheckBox chbxVariant3;
         private System.Windows.Forms.CheckBox chbxVariant4;
         private System.Windows.Forms.CheckBox chbxVariant5;
+        private System.Windows.Forms.Button btnSaveQuestion;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

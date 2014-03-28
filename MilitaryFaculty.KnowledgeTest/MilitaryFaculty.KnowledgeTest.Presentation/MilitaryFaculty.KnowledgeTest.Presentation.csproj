@@ -58,7 +58,7 @@
     <Compile Include="ControllerandContainer\IContainer.cs" />
     <Compile Include="PresenterInterfaces\IPresenter.cs" />
     <Compile Include="PresenterInterfaces\IPresenter`1.cs" />
-    <Compile Include="Presenters\AddQuestionPresenter.cs" />
+    <Compile Include="Presenters\AddEditQuestionPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
     <Compile Include="Presenters\MainTeacherPresenter.cs" />
     <Compile Include="Resources.Designer.cs">
@@ -66,7 +66,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\IAddQuestionView.cs" />
+    <Compile Include="Views\IAddEditQuestionView.cs" />
     <Compile Include="Views\ILoginView.cs" />
     <Compile Include="Views\IMainTacherView.cs" />
     <Compile Include="Views\IView.cs" />

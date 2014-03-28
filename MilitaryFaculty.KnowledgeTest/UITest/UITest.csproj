@@ -67,11 +67,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddQuestionForm.cs">
+    <Compile Include="AddEditQuestionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddQuestionForm.Designer.cs">
-      <DependentUpon>AddQuestionForm.cs</DependentUpon>
+    <Compile Include="AddEditQuestionForm.Designer.cs">
+      <DependentUpon>AddEditQuestionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AutofacInjectAdapter.cs" />
     <Compile Include="LoginForm.cs">
@@ -88,8 +88,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddQuestionForm.resx">
-      <DependentUpon>AddQuestionForm.cs</DependentUpon>
+    <EmbeddedResource Include="AddEditQuestionForm.resx">
+      <DependentUpon>AddEditQuestionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -118,7 +118,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MilitaryFaculty.KnowledgeTest.BLLInterfaces\MilitaryFaculty.KnowledgeTest.BLLInterfaces.csproj">

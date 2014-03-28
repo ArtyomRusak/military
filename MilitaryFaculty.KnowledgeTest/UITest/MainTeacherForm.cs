@@ -21,9 +21,13 @@ namespace UITest
             InitializeComponent();
 
             btnAddQuestion.Click += (sender, args) => Invoke(AddQuestion);
+            btnTest.Click += (sender, args) => Invoke(TestButton);
+            FormClosed += (sender, args) => Invoke(ContextDispose);
         }
 
         public event Action AddQuestion;
+        public event Action TestButton;
+        public event Action ContextDispose;
 
         public new void Show()
         {
