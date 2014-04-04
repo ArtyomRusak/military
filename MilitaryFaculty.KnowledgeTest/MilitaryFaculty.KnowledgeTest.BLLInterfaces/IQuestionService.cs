@@ -12,6 +12,7 @@ namespace MilitaryFaculty.KnowledgeTest.BLLInterfaces
         Question AddQuestion(string description);
         Question GetQuestionById(int questionId);
         void UpdateQuestion(Question question);
+        void UpdateQuestion(int questionId, string description);
         List<Question> GetAllQuestions();
     }
 }

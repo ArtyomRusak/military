@@ -49,6 +49,21 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             variantRepository.Update(variant);
         }
 
+        public Variant GetVariantById(int variantId)
+        {
+            var variantRepository = _factoryOfRepositries.GetVariantRepository();
+
+            try
+            {
+                var variant = variantRepository.GetEntityById(variantId);
+                return variant;
+            }
+            catch (Exception ex)
+            {
+                throw new VariantServiceException(ex);
+            }
+        }
+
         public void RemoveVariant(Variant variant)
         {
             var variantRepository = _factoryOfRepositries.GetVariantRepository();

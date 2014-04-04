@@ -11,8 +11,10 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
     {
         event Action ContextDispose;
         event Action AddQuestion;
-        Dictionary<string, bool> GetVariants { get; }
+        event Action UpdateQuestion;
+        Dictionary<string, object> GetVariants(bool isTag);
         string GetDescription { get; }
+        int GetQuestionId { get; }
         void ShowMessage(string message);
         void ClearValues();
         void SetValues(Question question);

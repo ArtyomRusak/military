@@ -33,35 +33,47 @@ namespace UITest
 
             FormClosed += (sender, args) => Invoke(ContextDispose);
             btnAddQuestion.Click += (sender, args) => Invoke(AddQuestion);
+            btnSaveQuestion.Click += (sender, args) => Invoke(UpdateQuestion);
         }
 
         public event Action ContextDispose;
         public event Action AddQuestion;
+        public event Action UpdateQuestion;
 
-        public Dictionary<string, bool> GetVariants
+        public Dictionary<string, object> GetVariants(bool isTag)
         {
-            get
+            var list = new Dictionary<string, object>();
+            var variantId = 0;
+            for (var i = 1; i <= (int)cmbxCounters.SelectedItem; i++)
             {
-                var list = new Dictionary<string, bool>();
-                for (var i = 1; i <= (int)cmbxCounters.SelectedItem; i++)
+                var text = Controls[BeginTextboxForVariant + i].Text;
+                if (isTag)
                 {
-                    var text = Controls[BeginTextboxForVariant + i].Text;
-                    var isRight = ((CheckBox)Controls[BeginCheckBoxForVariant + i]).Checked;
-                    if (text == "")
+                    if (Controls[BeginTextboxForVariant + i].Tag != null)
                     {
-                        return null;
+                        variantId = (int)Controls[BeginTextboxForVariant + i].Tag;
                     }
-                    try
+                    else
                     {
-                        list.Add(text, isRight);
-                    }
-                    catch (Exception e)
-                    {
-                        return null;
+                        variantId = 0;
                     }
                 }
-                return list;
+                var isRight = ((CheckBox)Controls[BeginCheckBoxForVariant + i]).Checked;
+                if (text == "")
+                {
+                    return null;
+                }
+                try
+                {
+                    list.Add(text, new { IsRight = isRight, VariantId = variantId });
+                    variantId = 0;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
             }
+            return list;
         }
 
         public string GetDescription
@@ -70,6 +82,15 @@ namespace UITest
             {
                 var description = tbxDescrition.Text;
                 return description;
+            }
+        }
+
+        public int GetQuestionId
+        {
+            get
+            {
+                var questionId = (int) tbxDescrition.Tag;
+                return questionId;
             }
         }
 
@@ -94,11 +115,13 @@ namespace UITest
             cmbxCounters.SelectedIndex = question.Variants.Count - 2;
             btnAddQuestion.Visible = false;
             tbxDescrition.Text = question.Description;
+            tbxDescrition.Tag = question.Id;
             for (var i = 0; i < question.Variants.Count; i++)
             {
                 Controls[BeginTextboxForVariant + (i + 1)].Text = question.Variants.ElementAt(i).Description;
                 ((CheckBox)Controls[BeginCheckBoxForVariant + (i + 1)]).Checked =
                     question.Variants.ElementAt(i).IsRight;
+                Controls[BeginTextboxForVariant + (i + 1)].Tag = question.Variants.ElementAt(i).Id;
             }
             _countForReadOnly = question.Variants.Count;
 

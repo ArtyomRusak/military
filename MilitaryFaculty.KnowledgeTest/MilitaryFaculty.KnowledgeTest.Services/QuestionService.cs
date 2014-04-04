@@ -71,6 +71,13 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             }
         }
 
+        public void UpdateQuestion(int questionId, string description)
+        {
+            var question = GetQuestionById(questionId);
+            question.Description = description;
+            UpdateQuestion(question);
+        }
+
         public void RemoveQuestion(Question question)
         {
             var questionRepository = _factoryOfRepositries.GetQuestionRepository();

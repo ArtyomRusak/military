@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MilitaryFaculty.KnowledgeTest.DataAccessLayer;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
 using MilitaryFaculty.KnowledgeTest.Presentation.ControllerandContainer;
 using MilitaryFaculty.KnowledgeTest.Presentation.Views;
+using MilitaryFaculty.KnowledgeTest.Services;
 
 namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 {
     public class MainTeacherPresenter : BasePresenter<IMainTeacherView>
     {
-        private readonly TestContext _context;
+        private TestContext _context;
 
         public MainTeacherPresenter(IApplicationController controller, IMainTeacherView view)
             : base(controller, view)
@@ -26,9 +28,13 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 
         public void TestQuestionForm()
         {
-            var questions = _context.Questions.ToList();
+            _context = new TestContext(Resources.ConnectionString);
+            var unitOfWork = new UnitOfWork(_context);
+            var questionService = new QuestionService(unitOfWork, unitOfWork);
+            var questions = questionService.GetAllQuestions();
             var question = questions.Last();
             Controller.Run<AddEditQuestionPresenter, Question>(question);
+            unitOfWork.Commit();
         }
 
         public void CreateQuestionForm()
