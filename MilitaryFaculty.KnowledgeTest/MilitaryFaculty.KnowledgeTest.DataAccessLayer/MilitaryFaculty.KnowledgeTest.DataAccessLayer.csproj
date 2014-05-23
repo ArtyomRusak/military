@@ -60,6 +60,7 @@
     <Compile Include="EFContext\Configurations\ResultConfiguration.cs" />
     <Compile Include="EFContext\Configurations\SecurityConfiguration.cs" />
     <Compile Include="EFContext\Configurations\StudentConfiguration.cs" />
+    <Compile Include="EFContext\Configurations\TestConfiguration.cs" />
     <Compile Include="EFContext\Configurations\VariantConfiguration.cs" />
     <Compile Include="EFContext\Initializers\RecreateAlways.cs" />
     <Compile Include="EFContext\Initializers\RecreateIfModelChanges.cs" />

@@ -9,6 +9,7 @@ using Autofac.Core;
 using MilitaryFaculty.KnowledgeTest.BLLInterfaces;
 using MilitaryFaculty.KnowledgeTest.Presentation.ControllerandContainer;
 using MilitaryFaculty.KnowledgeTest.Presentation.PresenterInterfaces;
+using MilitaryFaculty.KnowledgeTest.Presentation.Views;
 using IContainer = MilitaryFaculty.KnowledgeTest.Presentation.ControllerandContainer.IContainer;
 
 namespace MilitaryFaculty.KnowledgeTest.Presentation

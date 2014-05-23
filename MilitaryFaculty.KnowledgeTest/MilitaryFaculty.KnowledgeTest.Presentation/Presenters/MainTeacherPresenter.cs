@@ -14,7 +14,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 {
     public class MainTeacherPresenter : BasePresenter<IMainTeacherView>
     {
-        private TestContext _context;
+        private readonly TestContext _context;
 
         public MainTeacherPresenter(IApplicationController controller, IMainTeacherView view)
             : base(controller, view)
@@ -24,11 +24,21 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             View.AddQuestion += CreateQuestionForm;
             View.TestButton += TestQuestionForm;
             View.ContextDispose += Close;
+            View.LoadQuestions += LoadAllQuestions;
+        }
+
+        private void LoadAllQuestions()
+        {
+            var unitOfWork = new UnitOfWork(_context);
+            var questionService = new QuestionService(unitOfWork, unitOfWork);
+            var questions = questionService.GetAllNonBindedQuestions();
+            View.SetNonBindedQuestions(questions, null);
+            unitOfWork.Commit();
         }
 
         public void TestQuestionForm()
         {
-            _context = new TestContext(Resources.ConnectionString);
+            //_context = new TestContext(Resources.ConnectionString);
             var unitOfWork = new UnitOfWork(_context);
             var questionService = new QuestionService(unitOfWork, unitOfWork);
             var questions = questionService.GetAllQuestions();

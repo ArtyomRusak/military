@@ -39,25 +39,34 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
 
         protected void Seed(TestContext context)
         {
+            var mainTest = new Test { Name = "MainTest" };
+            context.Tests.Add(mainTest);
+            context.SaveChanges();
+
             var questions = new List<Question>()
             {
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
-                new Question() {Description = "Edit text."},
+                new Question {Description = "Edit text."}, 
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text."},
             };
-            questions.ForEach(e => context.Questions.Add(e));
+            //questions.ForEach(e => context.Questions.Add(e));
+            questions.ForEach(delegate(Question question)
+            {
+                question.Tests.Add(mainTest);
+                context.Questions.Add(question);
+            });
 
             context.SaveChanges();
 
@@ -65,11 +74,11 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
             {
                 new List<Variant>()
                 {
-                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
-                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
-                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
-                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
-                    new Variant() {QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text"},
                 }.ForEach(e => context.Variants.Add(e));
             }
 
@@ -78,7 +87,7 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
             var passwordSalt = DateTime.Now.ToString();
             var plainText = "638638" + passwordSalt;
             var password = PasswordService.CalculateHash(plainText);
-            var security = new Security {Password = password, PasswordSalt = passwordSalt};
+            var security = new Security { Password = password, PasswordSalt = passwordSalt };
             context.Security.Add(security);
 
             context.SaveChanges();

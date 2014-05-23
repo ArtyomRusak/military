@@ -118,10 +118,12 @@ namespace UITest
             tbxDescrition.Tag = question.Id;
             for (var i = 0; i < question.Variants.Count; i++)
             {
-                Controls[BeginTextboxForVariant + (i + 1)].Text = question.Variants.ElementAt(i).Description;
+                var variant = question.Variants.ElementAt(i);
+
+                Controls[BeginTextboxForVariant + (i + 1)].Text = variant.Description;
                 ((CheckBox)Controls[BeginCheckBoxForVariant + (i + 1)]).Checked =
-                    question.Variants.ElementAt(i).IsRight;
-                Controls[BeginTextboxForVariant + (i + 1)].Tag = question.Variants.ElementAt(i).Id;
+                    variant.IsRight;
+                Controls[BeginTextboxForVariant + (i + 1)].Tag = variant.Id;
             }
             _countForReadOnly = question.Variants.Count;
 
