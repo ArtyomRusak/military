@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
 
 namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
@@ -17,6 +14,6 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
         int GetQuestionId { get; }
         void ShowMessage(string message);
         void ClearValues();
-        void SetValues(Question question);
+        void SetValues(Question _question);
     }
 }

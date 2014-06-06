@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
 
 namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
@@ -13,8 +11,15 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
         event Action TestButton;
         event Action ContextDispose;
         event Action LoadQuestions;
+        event Action<Question> OpenEditQuestionForm;
 
         void SetNonBindedQuestions(List<Question> nonBindedQuestions,
             List<Question> bindedQuestions);
+
+        void SetDatasourcesToNull();
+
+        void SetAllQuestions(List<Question> questions);
+
+        void GetQuestion(object sender, DataGridViewCellEventArgs args);
     }
 }

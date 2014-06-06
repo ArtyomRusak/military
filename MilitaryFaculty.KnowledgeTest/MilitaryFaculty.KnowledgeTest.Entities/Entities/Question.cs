@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace MilitaryFaculty.KnowledgeTest.Entities.Entities
 {

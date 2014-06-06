@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
 using MilitaryFaculty.KnowledgeTest.Presentation.Views;
@@ -20,6 +15,7 @@ namespace UITest
         private readonly int[] _counters = { 2, 3, 4, 5 };
         private const int CountOfVariants = 5;
         private int _countForReadOnly;
+        private Question _question;
 
         public AddEditEditQuestionForm(ApplicationContext context)
         {
@@ -111,23 +107,23 @@ namespace UITest
 
         public void SetValues(Question question)
         {
-            //Performance???!!!
-            cmbxCounters.SelectedIndex = question.Variants.Count - 2;
+            _question = question;
+            cmbxCounters.SelectedIndex = _question.Variants.Count - 2;
             btnAddQuestion.Visible = false;
-            tbxDescrition.Text = question.Description;
-            tbxDescrition.Tag = question.Id;
-            for (var i = 0; i < question.Variants.Count; i++)
+            tbxDescrition.Text = _question.Description;
+            tbxDescrition.Tag = _question.Id;
+            for (var i = 0; i < _question.Variants.Count; i++)
             {
-                var variant = question.Variants.ElementAt(i);
+                var variant = _question.Variants.ElementAt(i);
 
                 Controls[BeginTextboxForVariant + (i + 1)].Text = variant.Description;
                 ((CheckBox)Controls[BeginCheckBoxForVariant + (i + 1)]).Checked =
                     variant.IsRight;
                 Controls[BeginTextboxForVariant + (i + 1)].Tag = variant.Id;
             }
-            _countForReadOnly = question.Variants.Count;
+            _countForReadOnly = _question.Variants.Count;
 
-            ControlsReadOnly(question.Variants.Count, true);
+            ControlsReadOnly(_question.Variants.Count, true);
         }
 
         public new void Show()

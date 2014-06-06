@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
@@ -14,25 +10,36 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 {
     public class MainTeacherPresenter : BasePresenter<IMainTeacherView>
     {
-        private readonly TestContext _context;
+        private TestContext _context;
 
         public MainTeacherPresenter(IApplicationController controller, IMainTeacherView view)
             : base(controller, view)
         {
             _context = new TestContext(Resources.ConnectionString);
 
-            View.AddQuestion += CreateQuestionForm;
+            View.AddQuestion += OpenQuestionForm;
             View.TestButton += TestQuestionForm;
             View.ContextDispose += Close;
             View.LoadQuestions += LoadAllQuestions;
+            View.OpenEditQuestionForm += OpenQuestionFormForEdit;
+        }
+
+        private void OpenQuestionFormForEdit(Question question)
+        {
+            Controller.Run<AddEditQuestionPresenter, Question>(question);
+
+            UpdateGrid();
         }
 
         private void LoadAllQuestions()
         {
             var unitOfWork = new UnitOfWork(_context);
             var questionService = new QuestionService(unitOfWork, unitOfWork);
-            var questions = questionService.GetAllNonBindedQuestions();
-            View.SetNonBindedQuestions(questions, null);
+            //var questions = questionService.GetAllNonBindedQuestions();
+            //View.SetNonBindedQuestions(questions, null);
+            var questions = questionService.GetAllQuestions();
+            View.SetDatasourcesToNull();
+            View.SetAllQuestions(questions);
             unitOfWork.Commit();
         }
 
@@ -47,9 +54,27 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             unitOfWork.Commit();
         }
 
-        public void CreateQuestionForm()
+        public void OpenQuestionForm()
         {
             Controller.Run<AddEditQuestionPresenter>();
+
+            UpdateGrid();
+        }
+
+        private void UpdateGrid()
+        {
+            if (_context != null)
+            {
+                _context = new TestContext(Resources.ConnectionString);
+            }
+
+            //Move this functionality to function.
+            var unitOfWork = new UnitOfWork(_context);
+            var questionService = new QuestionService(unitOfWork, unitOfWork);
+            var questions = questionService.GetAllQuestions();
+            View.SetDatasourcesToNull();
+            View.SetAllQuestions(questions);
+            unitOfWork.Commit();
         }
 
         public void Close()

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
-using Autofac.Core;
-using MilitaryFaculty.KnowledgeTest.BLLInterfaces;
+﻿using MilitaryFaculty.KnowledgeTest.BLLInterfaces;
 using MilitaryFaculty.KnowledgeTest.Presentation.ControllerandContainer;
 using MilitaryFaculty.KnowledgeTest.Presentation.PresenterInterfaces;
 using MilitaryFaculty.KnowledgeTest.Presentation.Views;
