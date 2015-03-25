@@ -11,5 +11,6 @@ namespace MilitaryFaculty.KnowledgeTest.BLLInterfaces
         void UpdateQuestion(int questionId, string description);
         List<Question> GetAllQuestions();
         List<Question> GetAllNonBindedQuestions();
+        List<Question> GetAllBindedQuestions();
     }
 }

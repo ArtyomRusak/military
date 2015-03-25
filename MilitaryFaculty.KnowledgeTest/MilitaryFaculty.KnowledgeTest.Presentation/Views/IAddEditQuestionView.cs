@@ -14,6 +14,6 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
         int GetQuestionId { get; }
         void ShowMessage(string message);
         void ClearValues();
-        void SetValues(Question _question);
+        void SetValues(Question question);
     }
 }

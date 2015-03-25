@@ -13,12 +13,11 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
         event Action LoadQuestions;
         event Action<Question> OpenEditQuestionForm;
 
-        void SetNonBindedQuestions(List<Question> nonBindedQuestions,
-            List<Question> bindedQuestions);
+        void SetNonBindedQuestions(IList<Question> nonBindedQuestions);
 
         void SetDatasourcesToNull();
 
-        void SetAllQuestions(List<Question> questions);
+        void SetBindedQuestions(IList<Question> questions);
 
         void GetQuestion(object sender, DataGridViewCellEventArgs args);
     }

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
@@ -11,12 +13,14 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
     public class MainTeacherPresenter : BasePresenter<IMainTeacherView>
     {
         private TestContext _context;
+        private IList<Question> _questionsToSelect;
+        private IList<Question> _selectedQuestions;
 
         public MainTeacherPresenter(IApplicationController controller, IMainTeacherView view)
             : base(controller, view)
         {
             _context = new TestContext(Resources.ConnectionString);
-
+            
             View.AddQuestion += OpenQuestionForm;
             View.TestButton += TestQuestionForm;
             View.ContextDispose += Close;
@@ -35,11 +39,12 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
         {
             var unitOfWork = new UnitOfWork(_context);
             var questionService = new QuestionService(unitOfWork, unitOfWork);
-            //var questions = questionService.GetAllNonBindedQuestions();
-            //View.SetNonBindedQuestions(questions, null);
-            var questions = questionService.GetAllQuestions();
+            _questionsToSelect = questionService.GetAllNonBindedQuestions();
+            _selectedQuestions = questionService.GetAllBindedQuestions();
             View.SetDatasourcesToNull();
-            View.SetAllQuestions(questions);
+            View.SetNonBindedQuestions(_questionsToSelect);
+            View.SetBindedQuestions(_selectedQuestions);
+
             unitOfWork.Commit();
         }
 
@@ -69,12 +74,15 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             }
 
             //Move this functionality to function.
-            var unitOfWork = new UnitOfWork(_context);
-            var questionService = new QuestionService(unitOfWork, unitOfWork);
-            var questions = questionService.GetAllQuestions();
-            View.SetDatasourcesToNull();
-            View.SetAllQuestions(questions);
-            unitOfWork.Commit();
+            //var unitOfWork = new UnitOfWork(_context);
+            //var questionService = new QuestionService(unitOfWork, unitOfWork);
+            //var questions = questionService.GetAllQuestions();
+            //View.SetDatasourcesToNull();
+            //View.SetBindedQuestions(questions);
+            //unitOfWork.Commit();
+
+
+            LoadAllQuestions();
         }
 
         public void Close()

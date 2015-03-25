@@ -111,5 +111,20 @@ namespace MilitaryFaculty.KnowledgeTest.Services
                 throw new QuestionServiceException(ex);
             }
         }
+
+        public List<Question> GetAllBindedQuestions()
+        {
+            var questionRepository = _factoryOfRepositries.GetQuestionRepository();
+
+            try
+            {
+                var questions = questionRepository.All().Where(e => e.Tests.Count != 0).ToList();
+                return questions;
+            }
+            catch (Exception ex)
+            {
+                throw new QuestionServiceException(ex);
+            }
+        }
     }
 }

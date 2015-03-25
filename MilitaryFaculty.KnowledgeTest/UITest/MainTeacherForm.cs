@@ -23,7 +23,7 @@ namespace UITest
             btnTest.Click += (sender, args) => Invoke(TestButton);
             FormClosed += (sender, args) => Invoke(ContextDispose);
             Load += (sender, args) => Invoke(LoadQuestions);
-            dgvNonBindedQuestions.CellDoubleClick += GetQuestion;
+            _dgvNonBindedQuestions.CellDoubleClick += GetQuestion;
         }
 
         public event Action AddQuestion;
@@ -32,25 +32,24 @@ namespace UITest
         public event Action LoadQuestions;
         public event Action<Question> OpenEditQuestionForm;
 
-        public void SetNonBindedQuestions(List<Question> nonBindedQuestions,
-            List<Question> bindedQuestions)
+        public void SetNonBindedQuestions(IList<Question> nonBindedQuestions)
         {
-            dgvNonBindedQuestions.DataSource = nonBindedQuestions;
+            _dgvNonBindedQuestions.DataSource = nonBindedQuestions;
         }
 
         public void SetDatasourcesToNull()
         {
-            dgvNonBindedQuestions.DataSource = null;
+            _dgvNonBindedQuestions.DataSource = null;
         }
 
-        public void SetAllQuestions(List<Question> questions)
+        public void SetBindedQuestions(IList<Question> questions)
         {
-            dgvNonBindedQuestions.DataSource = questions;
+            _dgvBindedQuestions.DataSource = questions;
         }
 
         public void GetQuestion(object sender, DataGridViewCellEventArgs args)
         {
-            var item = (Question) dgvNonBindedQuestions.Rows[args.RowIndex].DataBoundItem;
+            var item = (Question) _dgvNonBindedQuestions.Rows[args.RowIndex].DataBoundItem;
             OpenEditQuestionForm(item);
         }
 

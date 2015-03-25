@@ -31,16 +31,19 @@
             this.components = new System.ComponentModel.Container();
             this.btnAddQuestion = new System.Windows.Forms.Button();
             this.btnTest = new System.Windows.Forms.Button();
-            this.dgvNonBindedQuestions = new System.Windows.Forms.DataGridView();
-            this.questionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this._dgvNonBindedQuestions = new System.Windows.Forms.DataGridView();
+            this._dgvBindedQuestions = new System.Windows.Forms.DataGridView();
+            this._addQuestionToTestBtn = new System.Windows.Forms.Button();
+            this._removeQuestionFromTestBtn = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvNonBindedQuestions)).BeginInit();
+            this.questionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.questionBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this._dgvNonBindedQuestions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._dgvBindedQuestions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.questionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.questionBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAddQuestion
@@ -61,52 +64,57 @@
             this.btnTest.Text = "button1";
             this.btnTest.UseVisualStyleBackColor = true;
             // 
-            // dgvNonBindedQuestions
+            // _dgvNonBindedQuestions
             // 
-            this.dgvNonBindedQuestions.AllowUserToAddRows = false;
-            this.dgvNonBindedQuestions.AllowUserToDeleteRows = false;
-            this.dgvNonBindedQuestions.AutoGenerateColumns = false;
-            this.dgvNonBindedQuestions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNonBindedQuestions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this._dgvNonBindedQuestions.AllowUserToAddRows = false;
+            this._dgvNonBindedQuestions.AllowUserToDeleteRows = false;
+            this._dgvNonBindedQuestions.AutoGenerateColumns = false;
+            this._dgvNonBindedQuestions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._dgvNonBindedQuestions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn});
-            this.dgvNonBindedQuestions.DataSource = this.questionBindingSource;
-            this.dgvNonBindedQuestions.Location = new System.Drawing.Point(12, 127);
-            this.dgvNonBindedQuestions.Name = "dgvNonBindedQuestions";
-            this.dgvNonBindedQuestions.ReadOnly = true;
-            this.dgvNonBindedQuestions.Size = new System.Drawing.Size(323, 389);
-            this.dgvNonBindedQuestions.TabIndex = 4;
-            this.dgvNonBindedQuestions.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvNonBindedQuestions_CellMouseMove);
+            this._dgvNonBindedQuestions.DataSource = this.questionBindingSource;
+            this._dgvNonBindedQuestions.Location = new System.Drawing.Point(12, 127);
+            this._dgvNonBindedQuestions.MultiSelect = false;
+            this._dgvNonBindedQuestions.Name = "_dgvNonBindedQuestions";
+            this._dgvNonBindedQuestions.ReadOnly = true;
+            this._dgvNonBindedQuestions.Size = new System.Drawing.Size(323, 389);
+            this._dgvNonBindedQuestions.TabIndex = 4;
+            this._dgvNonBindedQuestions.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvNonBindedQuestions_CellMouseMove);
             // 
-            // questionBindingSource
+            // _dgvBindedQuestions
             // 
-            this.questionBindingSource.DataSource = typeof(MilitaryFaculty.KnowledgeTest.Entities.Entities.Question);
+            this._dgvBindedQuestions.AllowUserToAddRows = false;
+            this._dgvBindedQuestions.AllowUserToDeleteRows = false;
+            this._dgvBindedQuestions.AutoGenerateColumns = false;
+            this._dgvBindedQuestions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._dgvBindedQuestions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.descriptionDataGridViewTextBoxColumn1});
+            this._dgvBindedQuestions.DataSource = this.questionBindingSource1;
+            this._dgvBindedQuestions.Location = new System.Drawing.Point(422, 127);
+            this._dgvBindedQuestions.MultiSelect = false;
+            this._dgvBindedQuestions.Name = "_dgvBindedQuestions";
+            this._dgvBindedQuestions.ReadOnly = true;
+            this._dgvBindedQuestions.Size = new System.Drawing.Size(287, 389);
+            this._dgvBindedQuestions.TabIndex = 5;
             // 
-            // dataGridView1
+            // _addQuestionToTestBtn
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(422, 127);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(316, 389);
-            this.dataGridView1.TabIndex = 5;
+            this._addQuestionToTestBtn.Location = new System.Drawing.Point(341, 289);
+            this._addQuestionToTestBtn.Name = "_addQuestionToTestBtn";
+            this._addQuestionToTestBtn.Size = new System.Drawing.Size(75, 23);
+            this._addQuestionToTestBtn.TabIndex = 6;
+            this._addQuestionToTestBtn.Text = "Добавить";
+            this._addQuestionToTestBtn.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // _removeQuestionFromTestBtn
             // 
-            this.button1.Location = new System.Drawing.Point(341, 289);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(341, 344);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Исключить";
-            this.button2.UseVisualStyleBackColor = true;
+            this._removeQuestionFromTestBtn.Location = new System.Drawing.Point(341, 344);
+            this._removeQuestionFromTestBtn.Name = "_removeQuestionFromTestBtn";
+            this._removeQuestionFromTestBtn.Size = new System.Drawing.Size(75, 23);
+            this._removeQuestionFromTestBtn.TabIndex = 7;
+            this._removeQuestionFromTestBtn.Text = "Исключить";
+            this._removeQuestionFromTestBtn.UseVisualStyleBackColor = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -125,22 +133,39 @@
             this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             this.descriptionDataGridViewTextBoxColumn.Width = 250;
             // 
+            // questionBindingSource
+            // 
+            this.questionBindingSource.DataSource = typeof(MilitaryFaculty.KnowledgeTest.Entities.Entities.Question);
+            // 
+            // questionBindingSource1
+            // 
+            this.questionBindingSource1.DataSource = typeof(MilitaryFaculty.KnowledgeTest.Entities.Entities.Question);
+            // 
+            // descriptionDataGridViewTextBoxColumn1
+            // 
+            this.descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn1.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
+            this.descriptionDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn1.Width = 200;
+            // 
             // MainTeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(825, 587);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.dgvNonBindedQuestions);
+            this.Controls.Add(this._removeQuestionFromTestBtn);
+            this.Controls.Add(this._addQuestionToTestBtn);
+            this.Controls.Add(this._dgvBindedQuestions);
+            this.Controls.Add(this._dgvNonBindedQuestions);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnAddQuestion);
             this.Name = "MainTeacherForm";
             this.Text = "MainTeacherForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvNonBindedQuestions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._dgvNonBindedQuestions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._dgvBindedQuestions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.questionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.questionBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -149,12 +174,14 @@
 
         private System.Windows.Forms.Button btnAddQuestion;
         private System.Windows.Forms.Button btnTest;
-        private System.Windows.Forms.DataGridView dgvNonBindedQuestions;
+        private System.Windows.Forms.DataGridView _dgvNonBindedQuestions;
         private System.Windows.Forms.BindingSource questionBindingSource;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView _dgvBindedQuestions;
+        private System.Windows.Forms.Button _addQuestionToTestBtn;
+        private System.Windows.Forms.Button _removeQuestionFromTestBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.BindingSource questionBindingSource1;
     }
 }
