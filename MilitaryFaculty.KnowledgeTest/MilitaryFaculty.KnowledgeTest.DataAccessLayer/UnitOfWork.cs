@@ -17,6 +17,7 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer
         private IRepository<Question, int> _questionRepository;
         private IRepository<Result, int> _resultRepository;
         private IRepository<Security, int> _securityRepository;
+        private IRepository<Test, int> _testRepository;
         private bool _disposed;
         private bool _isTransactionActive;
 
@@ -111,6 +112,11 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer
         public IRepository<Security, int> GetSecurityRepository()
         {
             return _securityRepository ?? (_securityRepository = new Repository<Security, int>(_context));
+        }
+
+        public IRepository<Test, int> GetTestRepository()
+        {
+            return _testRepository ?? (_testRepository = new Repository<Test, int>(_context));
         }
     }
 }

@@ -9,5 +9,6 @@ namespace MilitaryFaculty.KnowledgeTest.DALInterfaces
         IRepository<Question, int> GetQuestionRepository();
         IRepository<Result, int> GetResultRepository();
         IRepository<Security, int> GetSecurityRepository();
+        IRepository<Test, int> GetTestRepository();
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext;
@@ -13,6 +12,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
     public class MainTeacherPresenter : BasePresenter<IMainTeacherView>
     {
         private TestContext _context;
+        private readonly Test _singletonTest;
         private IList<Question> _questionsToSelect;
         private IList<Question> _selectedQuestions;
 
@@ -20,12 +20,44 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             : base(controller, view)
         {
             _context = new TestContext(Resources.ConnectionString);
-            
+            var unitOfWork = new UnitOfWork(_context);
+            var testService = new TestService(unitOfWork, unitOfWork);
+            _singletonTest = testService.GetTestSingleton();
+            unitOfWork.Commit();
+
             View.AddQuestion += OpenQuestionForm;
-            View.TestButton += TestQuestionForm;
+            View.SaveChangesToTest += SaveChangesToTest;
             View.ContextDispose += Close;
             View.LoadQuestions += LoadAllQuestions;
             View.OpenEditQuestionForm += OpenQuestionFormForEdit;
+            View.AddQuestionToTest += AddQuestionToTest;
+            View.RemoveQuestionFromTest += RemoveQuestionFromTest;
+        }
+
+        private void RemoveQuestionFromTest()
+        {
+            var question = View.GetSelectedRowFromBindedQuestions();
+            _singletonTest.Questions.Remove(question);
+
+            _selectedQuestions.Remove(question);
+            _questionsToSelect.Add(question);
+            View.SetDatasourcesToNull();
+            View.SetBindedQuestions(_selectedQuestions);
+            View.SetNonBindedQuestions(_questionsToSelect);
+        }
+
+        private void AddQuestionToTest()
+        {
+            var question = View.GetSelectedRowFromNonBindedQuestions();
+            _singletonTest.Questions.Add(question);
+
+            _selectedQuestions.Add(question);
+            _questionsToSelect.Remove(question);
+            View.SetDatasourcesToNull();
+            View.SetBindedQuestions(_selectedQuestions);
+            View.SetNonBindedQuestions(_questionsToSelect);
+
+            //LoadAllQuestions();
         }
 
         private void OpenQuestionFormForEdit(Question question)
@@ -48,15 +80,15 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             unitOfWork.Commit();
         }
 
-        public void TestQuestionForm()
+        public void SaveChangesToTest()
         {
-            //_context = new TestContext(Resources.ConnectionString);
-            var unitOfWork = new UnitOfWork(_context);
-            var questionService = new QuestionService(unitOfWork, unitOfWork);
-            var questions = questionService.GetAllQuestions();
-            var question = questions.Last();
-            Controller.Run<AddEditQuestionPresenter, Question>(question);
-            unitOfWork.Commit();
+            _context.SaveChanges();
+            //var unitOfWork = new UnitOfWork(_context);
+            //var questionService = new QuestionService(unitOfWork, unitOfWork);
+            //var questions = questionService.GetAllQuestions();
+            //var question = questions.Last();
+            //Controller.Run<AddEditQuestionPresenter, Question>(question);
+            //unitOfWork.Commit();
         }
 
         public void OpenQuestionForm()
@@ -72,15 +104,6 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             {
                 _context = new TestContext(Resources.ConnectionString);
             }
-
-            //Move this functionality to function.
-            //var unitOfWork = new UnitOfWork(_context);
-            //var questionService = new QuestionService(unitOfWork, unitOfWork);
-            //var questions = questionService.GetAllQuestions();
-            //View.SetDatasourcesToNull();
-            //View.SetBindedQuestions(questions);
-            //unitOfWork.Commit();
-
 
             LoadAllQuestions();
         }

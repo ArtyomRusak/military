@@ -8,9 +8,11 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
     public interface IMainTeacherView : IView
     {
         event Action AddQuestion;
-        event Action TestButton;
+        event Action SaveChangesToTest;
         event Action ContextDispose;
         event Action LoadQuestions;
+        event Action AddQuestionToTest;
+        event Action RemoveQuestionFromTest;
         event Action<Question> OpenEditQuestionForm;
 
         void SetNonBindedQuestions(IList<Question> nonBindedQuestions);
@@ -20,5 +22,9 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
         void SetBindedQuestions(IList<Question> questions);
 
         void GetQuestion(object sender, DataGridViewCellEventArgs args);
+
+        Question GetSelectedRowFromNonBindedQuestions();
+
+        Question GetSelectedRowFromBindedQuestions();
     }
 }

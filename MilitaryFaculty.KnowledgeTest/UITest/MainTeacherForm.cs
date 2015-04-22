@@ -20,16 +20,20 @@ namespace UITest
                 Invoke(AddQuestion);
                 Invoke(LoadQuestions);
             };
-            btnTest.Click += (sender, args) => Invoke(TestButton);
+            _btnSaveChanges.Click += (sender, args) => Invoke(SaveChangesToTest);
             FormClosed += (sender, args) => Invoke(ContextDispose);
             Load += (sender, args) => Invoke(LoadQuestions);
             _dgvNonBindedQuestions.CellDoubleClick += GetQuestion;
+            _addQuestionToTestBtn.Click += (sender, args) => Invoke(AddQuestionToTest);
+            _removeQuestionFromTestBtn.Click += (sender, args) => Invoke(RemoveQuestionFromTest);
         }
 
         public event Action AddQuestion;
-        public event Action TestButton;
+        public event Action SaveChangesToTest;
         public event Action ContextDispose;
         public event Action LoadQuestions;
+        public event Action AddQuestionToTest;
+        public event Action RemoveQuestionFromTest;
         public event Action<Question> OpenEditQuestionForm;
 
         public void SetNonBindedQuestions(IList<Question> nonBindedQuestions)
@@ -40,6 +44,7 @@ namespace UITest
         public void SetDatasourcesToNull()
         {
             _dgvNonBindedQuestions.DataSource = null;
+            _dgvBindedQuestions.DataSource = null;
         }
 
         public void SetBindedQuestions(IList<Question> questions)
@@ -49,11 +54,21 @@ namespace UITest
 
         public void GetQuestion(object sender, DataGridViewCellEventArgs args)
         {
-            var item = (Question) _dgvNonBindedQuestions.Rows[args.RowIndex].DataBoundItem;
+            var item = (Question)_dgvNonBindedQuestions.Rows[args.RowIndex].DataBoundItem;
             OpenEditQuestionForm(item);
         }
 
-        public event EventHandler<DataGridViewCellEventArgs> GetQuestionFromGrid;
+        public Question GetSelectedRowFromNonBindedQuestions()
+        {
+            var question = (Question)_dgvNonBindedQuestions.SelectedRows[0].DataBoundItem;
+            return question;
+        }
+
+        public Question GetSelectedRowFromBindedQuestions()
+        {
+            var question = (Question)_dgvBindedQuestions.SelectedRows[0].DataBoundItem;
+            return question;
+        }
 
         public new void Show()
         {
