@@ -5,7 +5,7 @@ using MilitaryFaculty.KnowledgeTest.Entities.Entities;
 
 namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
 {
-    public interface IMainTeacherView : IView
+    public interface IMainTeacherView : IMessagableView
     {
         event Action AddQuestion;
         event Action SaveChangesToTest;

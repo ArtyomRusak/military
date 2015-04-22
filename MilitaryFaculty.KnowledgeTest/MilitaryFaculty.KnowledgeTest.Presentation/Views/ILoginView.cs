@@ -2,12 +2,11 @@
 
 namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
 {
-    public interface ILoginView : IView
+    public interface ILoginView : IMessagableView
     {
         string Password { get; }
         event Action LoginAsStudent;
         event Action LoginAsTeacher;
         event Action ContextDisposed;
-        void ShowError(string message);
     }
 }

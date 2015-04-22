@@ -37,13 +37,13 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             else
             {
                 unitOfWork.Commit();
-                View.ShowError(WrongPassword);
+                View.ShowMessage(WrongPassword, string.Empty);
             }
         }
 
         public void LoginAsStudent()
         {
-            View.ShowError("Go to student form");
+            View.ShowMessage("Go to student form", string.Empty);
         }
 
         public void Close()

@@ -30,9 +30,9 @@ namespace UITest
         public event Action LoginAsTeacher;
         public event Action ContextDisposed;
 
-        public void ShowError(string message)
+        public void ShowMessage(string message, string caption)
         {
-            MessageBox.Show(message);
+            MessageBox.Show(message, caption);
         }
 
         public void Invoke(Action action)

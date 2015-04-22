@@ -76,6 +76,11 @@ namespace UITest
             base.Show();
         }
 
+        public void ShowMessage(string message, string caption)
+        {
+            MessageBox.Show(message, "Информация", MessageBoxButtons.OK);
+        }
+
         public void Invoke(Action action)
         {
             if (action != null)

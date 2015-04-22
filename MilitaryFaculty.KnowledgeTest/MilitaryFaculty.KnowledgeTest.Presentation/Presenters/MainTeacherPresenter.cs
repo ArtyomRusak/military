@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
@@ -82,13 +82,15 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 
         public void SaveChangesToTest()
         {
-            _context.SaveChanges();
-            //var unitOfWork = new UnitOfWork(_context);
-            //var questionService = new QuestionService(unitOfWork, unitOfWork);
-            //var questions = questionService.GetAllQuestions();
-            //var question = questions.Last();
-            //Controller.Run<AddEditQuestionPresenter, Question>(question);
-            //unitOfWork.Commit();
+            try
+            {
+                _context.SaveChanges();
+                View.ShowMessage("Сохранение прошло успешно", string.Empty);
+            }
+            catch (Exception e)
+            {
+                View.ShowMessage("При сохранении возникла ошибка", string.Empty);
+            }
         }
 
         public void OpenQuestionForm()

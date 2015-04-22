@@ -69,7 +69,8 @@
     </Compile>
     <Compile Include="Views\IAddEditQuestionView.cs" />
     <Compile Include="Views\ILoginView.cs" />
-    <Compile Include="Views\IMainTacherView.cs" />
+    <Compile Include="Views\IMainTeacherView.cs" />
+    <Compile Include="Views\IMessagableView.cs" />
     <Compile Include="Views\IView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
