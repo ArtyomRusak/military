@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
 using MilitaryFaculty.KnowledgeTest.Presentation.Views;
+using UITest.Properties;
 
 namespace UITest
 {
@@ -20,12 +21,12 @@ namespace UITest
                 Invoke(AddQuestion);
                 Invoke(LoadQuestions);
             };
-            _btnSaveChanges.Click += (sender, args) => Invoke(SaveChangesToTest);
-            FormClosed += (sender, args) => Invoke(ContextDispose);
-            Load += (sender, args) => Invoke(LoadQuestions);
-            _dgvNonBindedQuestions.CellDoubleClick += GetQuestion;
-            _addQuestionToTestBtn.Click += (sender, args) => Invoke(AddQuestionToTest);
-            _removeQuestionFromTestBtn.Click += (sender, args) => Invoke(RemoveQuestionFromTest);
+            _btnSaveChanges.Click += (sender, args) => this.Invoke(SaveChangesToTest);
+            this.FormClosed += (sender, args) => this.Invoke(CloseFromDisposeContextAndOpenLoginForm);
+            this.Load += (sender, args) => this.Invoke(LoadQuestions);
+            _dgvNonBindedQuestions.CellDoubleClick += this.GetQuestion;
+            _addQuestionToTestBtn.Click += (sender, args) => this.Invoke(AddQuestionToTest);
+            _removeQuestionFromTestBtn.Click += (sender, args) => this.Invoke(RemoveQuestionFromTest);
         }
 
         public event Action AddQuestion;
@@ -34,6 +35,7 @@ namespace UITest
         public event Action LoadQuestions;
         public event Action AddQuestionToTest;
         public event Action RemoveQuestionFromTest;
+        public event Action CloseFromDisposeContextAndOpenLoginForm;
         public event Action<Question> OpenEditQuestionForm;
 
         public void SetNonBindedQuestions(IList<Question> nonBindedQuestions)
@@ -70,6 +72,13 @@ namespace UITest
             return question;
         }
 
+        public bool ViewQuestionToConfirm()
+        {
+            var confirm = MessageBox.Show(Resources.SaveChangesToTestString, string.Empty,
+                MessageBoxButtons.YesNo);
+            return confirm.ToString() == "Yes";
+        }
+
         public new void Show()
         {
             _context.MainForm = this;
@@ -87,16 +96,6 @@ namespace UITest
             {
                 action();
             }
-        }
-
-        private void dgvNonBindedQuestions_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            //if (e.RowIndex < 0)
-            //{
-            //    return;
-            //}
-            //var data = dgvNonBindedQuestions.Rows[e.RowIndex].Cells;
-            //MessageBox.Show(String.Format("Id - {0}, Description - {1}", data[0].Value, data[1].Value));
         }
     }
 }

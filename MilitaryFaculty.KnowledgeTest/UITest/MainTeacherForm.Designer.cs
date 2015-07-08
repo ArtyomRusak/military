@@ -81,7 +81,6 @@
             this._dgvNonBindedQuestions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._dgvNonBindedQuestions.Size = new System.Drawing.Size(323, 389);
             this._dgvNonBindedQuestions.TabIndex = 4;
-            this._dgvNonBindedQuestions.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvNonBindedQuestions_CellMouseMove);
             // 
             // idDataGridViewTextBoxColumn
             // 

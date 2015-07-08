@@ -2,12 +2,13 @@
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext;
 using MilitaryFaculty.KnowledgeTest.Presentation.ControllerandContainer;
+using MilitaryFaculty.KnowledgeTest.Presentation.PresenterInterfaces;
 using MilitaryFaculty.KnowledgeTest.Presentation.Views;
 using MilitaryFaculty.KnowledgeTest.Services;
 
 namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 {
-    public class LoginPresenter : BasePresenter<ILoginView>
+    public class LoginPresenter : BasePresenter<ILoginView>, IPresenter<bool>
     {
         private IMembershipService _membershipService;
         private readonly TestContext _context;
@@ -49,6 +50,12 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
         public void Close()
         {
             _context.Dispose();
+        }
+
+        public void Run(bool arg)
+        {
+            View.IsStartPoint = arg;
+            View.Show();
         }
     }
 }

@@ -27,7 +27,7 @@ namespace UITest
                 .RegisterInstance(new ApplicationContext())
                 .DoneBuilding();
 
-            controller.Run<LoginPresenter>();
+            controller.Run<LoginPresenter, bool>(true);
         }
     }
 }

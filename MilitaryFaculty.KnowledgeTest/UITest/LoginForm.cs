@@ -12,6 +12,7 @@ namespace UITest
         {
             _context = context;
             InitializeComponent();
+            this.IsStartPoint = true;
 
             FormClosed += (sender, args) => Invoke(ContextDisposed);
             btnStudent.Click += (sender, args) => Invoke(LoginAsStudent);
@@ -21,10 +22,18 @@ namespace UITest
         public new void Show()
         {
             _context.MainForm = this;
-            Application.Run(_context);
+            if (this.IsStartPoint)
+            {
+                Application.Run(_context);
+            }
+            else
+            {
+                ((Form)this).Show();
+            }
         }
 
         public string Password { get { return tbxPassword.Text; } }
+        public bool IsStartPoint { get; set; }
 
         public event Action LoginAsStudent;
         public event Action LoginAsTeacher;

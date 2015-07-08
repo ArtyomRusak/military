@@ -27,11 +27,18 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 
             View.AddQuestion += OpenQuestionForm;
             View.SaveChangesToTest += SaveChangesToTest;
-            View.ContextDispose += Close;
+            View.ContextDispose += ContextDispose;
             View.LoadQuestions += LoadAllQuestions;
             View.OpenEditQuestionForm += OpenQuestionFormForEdit;
             View.AddQuestionToTest += AddQuestionToTest;
             View.RemoveQuestionFromTest += RemoveQuestionFromTest;
+            View.CloseFromDisposeContextAndOpenLoginForm += ViewOnCloseFromDisposeContextAndOpenLoginForm;
+        }
+
+        private void ViewOnCloseFromDisposeContextAndOpenLoginForm()
+        {
+            Controller.Run<LoginPresenter, bool>(false);
+            ContextDispose();
         }
 
         private void RemoveQuestionFromTest()
@@ -82,14 +89,17 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 
         public void SaveChangesToTest()
         {
-            try
+            if (View.ViewQuestionToConfirm())
             {
-                _context.SaveChanges();
-                View.ShowMessage("Сохранение прошло успешно", string.Empty);
-            }
-            catch (Exception e)
-            {
-                View.ShowMessage("При сохранении возникла ошибка", string.Empty);
+                try
+                {
+                    _context.SaveChanges();
+                    View.ShowMessage("Сохранение прошло успешно.", string.Empty);
+                }
+                catch (Exception e)
+                {
+                    View.ShowMessage("При сохранении возникла ошибка.", string.Empty);
+                }   
             }
         }
 
@@ -110,7 +120,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             LoadAllQuestions();
         }
 
-        public void Close()
+        public void ContextDispose()
         {
             _context.Dispose();
         }

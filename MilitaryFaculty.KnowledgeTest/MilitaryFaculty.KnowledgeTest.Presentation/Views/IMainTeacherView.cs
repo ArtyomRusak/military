@@ -13,6 +13,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
         event Action LoadQuestions;
         event Action AddQuestionToTest;
         event Action RemoveQuestionFromTest;
+        event Action CloseFromDisposeContextAndOpenLoginForm;
         event Action<Question> OpenEditQuestionForm;
 
         void SetNonBindedQuestions(IList<Question> nonBindedQuestions);
@@ -26,5 +27,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
         Question GetSelectedRowFromNonBindedQuestions();
 
         Question GetSelectedRowFromBindedQuestions();
+
+        bool ViewQuestionToConfirm();
     }
 }
