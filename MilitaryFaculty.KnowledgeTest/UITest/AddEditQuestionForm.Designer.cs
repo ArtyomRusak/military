@@ -1,6 +1,6 @@
 ﻿namespace UITest
 {
-    partial class AddEditEditQuestionForm
+    partial class AddEditQuestionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -203,7 +203,7 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // AddEditEditQuestionForm
+            // AddEditQuestionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -224,7 +224,7 @@
             this.Controls.Add(this.tbxDescrition);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.btnAddQuestion);
-            this.Name = "AddEditEditQuestionForm";
+            this.Name = "AddEditQuestionForm";
             this.Text = "AddQuestionForm";
             this.ResumeLayout(false);
             this.PerformLayout();

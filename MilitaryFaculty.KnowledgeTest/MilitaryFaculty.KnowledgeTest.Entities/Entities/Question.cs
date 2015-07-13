@@ -6,11 +6,11 @@ namespace MilitaryFaculty.KnowledgeTest.Entities.Entities
     {
         public Question()
         {
-            Tests = new List<Test>();
+            this.Tests = new List<Test>();
         }
 
         public string Description { get; set; }
-        public virtual HashSet<Variant> Variants { get; set; }
+        public virtual List<Variant> Variants { get; set; }
         public virtual List<Test> Tests { get; set; }
     }
 }

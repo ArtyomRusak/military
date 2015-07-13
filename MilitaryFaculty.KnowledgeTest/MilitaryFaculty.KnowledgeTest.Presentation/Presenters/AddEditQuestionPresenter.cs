@@ -12,7 +12,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
     public class AddEditQuestionPresenter : BasePresenter<IAddEditQuestionView, Question>
     {
         private const string FailedDescription = "Введите название вопроса!";
-        private const string FailedVariants = "Введите варианты ответов!Варианты ответов не должны совпадать!";
+        private const string FailedVariants = "Введите варианты ответов или выберите хотя бы один!Варианты ответов не должны совпадать!";
         private const string SuccessfullyAdded = "Успешно добавлен!";
         private const string ExceptionMessage = "Что-то пошло не так, попробуйте ещё раз!";
         private const string SuccessfullyUpdated = "Успешно обновлён!";

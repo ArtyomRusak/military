@@ -31,6 +31,7 @@
             this.btnTeacher = new System.Windows.Forms.Button();
             this.btnStudent = new System.Windows.Forms.Button();
             this.tbxPassword = new System.Windows.Forms.TextBox();
+            this._testButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnTeacher
@@ -60,12 +61,22 @@
             this.tbxPassword.TabIndex = 2;
             this.tbxPassword.UseSystemPasswordChar = true;
             // 
+            // _testButton
+            // 
+            this._testButton.Location = new System.Drawing.Point(36, 87);
+            this._testButton.Name = "_testButton";
+            this._testButton.Size = new System.Drawing.Size(149, 93);
+            this._testButton.TabIndex = 3;
+            this._testButton.Text = "button1";
+            this._testButton.UseVisualStyleBackColor = true;
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.btnTeacher;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(748, 282);
+            this.Controls.Add(this._testButton);
             this.Controls.Add(this.tbxPassword);
             this.Controls.Add(this.btnStudent);
             this.Controls.Add(this.btnTeacher);
@@ -81,5 +92,6 @@
         private System.Windows.Forms.Button btnTeacher;
         private System.Windows.Forms.Button btnStudent;
         private System.Windows.Forms.TextBox tbxPassword;
+        private System.Windows.Forms.Button _testButton;
     }
 }

@@ -12,7 +12,7 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext
         public DbSet<Security> Security { get; set; }
         public DbSet<Result> Results { get; set; }
         public DbSet<Test> Tests { get; set; }
-
+        public DbSet<TestConfig> TestConfigs { get; set; }
         public TestContext(string connectionString)
             : base(connectionString)
         {
@@ -27,6 +27,7 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext
             modelBuilder.Configurations.Add(new SecurityConfiguration());
             modelBuilder.Configurations.Add(new ResultConfiguration());
             modelBuilder.Configurations.Add(new TestConfiguration());
+            modelBuilder.Configurations.Add(new TestConfigConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

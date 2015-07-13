@@ -7,19 +7,17 @@ using MilitaryFaculty.KnowledgeTest.Presentation.Views;
 
 namespace UITest
 {
-    public partial class AddEditEditQuestionForm : Form, IAddEditQuestionView
+    public partial class AddEditQuestionForm : Form, IAddEditQuestionView
     {
         private const string BeginTextboxForVariant = "tbxVariant";
         private const string BeginCheckBoxForVariant = "chbxVariant";
-        private ApplicationContext _context;
         private readonly int[] _counters = { 2, 3, 4, 5 };
         private const int CountOfVariants = 5;
         private int _countForReadOnly;
         private Question _question;
 
-        public AddEditEditQuestionForm(ApplicationContext context)
+        public AddEditQuestionForm(ApplicationContext context)
         {
-            _context = context;
             InitializeComponent();
 
             cmbxCounters.DataSource = _counters;
@@ -40,6 +38,7 @@ namespace UITest
         {
             var list = new Dictionary<string, object>();
             var variantId = 0;
+            var checker = false;
             for (var i = 1; i <= (int)cmbxCounters.SelectedItem; i++)
             {
                 var text = Controls[BeginTextboxForVariant + i].Text;
@@ -55,10 +54,12 @@ namespace UITest
                     }
                 }
                 var isRight = ((CheckBox)Controls[BeginCheckBoxForVariant + i]).Checked;
+                checker = isRight;
                 if (text == "")
                 {
                     return null;
                 }
+
                 try
                 {
                     list.Add(text, new { IsRight = isRight, VariantId = variantId });
@@ -69,6 +70,12 @@ namespace UITest
                     return null;
                 }
             }
+
+            if (checker == false)
+            {
+                return null;
+            }
+
             return list;
         }
 

@@ -17,6 +17,7 @@ namespace UITest
             FormClosed += (sender, args) => Invoke(ContextDisposed);
             btnStudent.Click += (sender, args) => Invoke(LoginAsStudent);
             btnTeacher.Click += (sender, args) => Invoke(LoginAsTeacher);
+            _testButton.Click += (sender, args) => Invoke(TestAction);
         }
 
         public new void Show()
@@ -37,6 +38,7 @@ namespace UITest
 
         public event Action LoginAsStudent;
         public event Action LoginAsTeacher;
+        public event Action TestAction;
         public event Action ContextDisposed;
 
         public void ShowMessage(string message, string caption)

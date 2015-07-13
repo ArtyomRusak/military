@@ -93,6 +93,15 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             {
                 try
                 {
+                    if (_singletonTest.Questions.Count > _singletonTest.TestConfig.NumberOfQuestions)
+                    {
+                        View.ShowMessage(
+                            String.Format(
+                                "Вы превысили допустимое количество вопросов. Измените конфигурацию для теста. Доступное количество - {0}",
+                                _singletonTest.TestConfig.NumberOfQuestions), "Предупреждение");
+                        return;
+                    }
+
                     _context.SaveChanges();
                     View.ShowMessage("Сохранение прошло успешно.", string.Empty);
                 }

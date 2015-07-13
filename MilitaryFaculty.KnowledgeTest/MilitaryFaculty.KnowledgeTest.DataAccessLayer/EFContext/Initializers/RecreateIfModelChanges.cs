@@ -40,7 +40,9 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
         protected void Seed(TestContext context)
         {
             var mainTest = new Test { Name = "MainTest" };
+            var mainTestConfiguration = new TestConfig { NumberOfQuestions = 15, Test = mainTest };
             context.Tests.Add(mainTest);
+            context.TestConfigs.Add(mainTestConfiguration);
             context.SaveChanges();
 
             var questions = new List<Question>()

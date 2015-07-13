@@ -20,10 +20,12 @@ namespace UITest
             var controller = new ApplicationController(new AutofacInjectAdapter())
                 .RegisterView<ILoginView, LoginForm>()
                 .RegisterView<IMainTeacherView, MainTeacherForm>()
-                .RegisterView<IAddEditQuestionView, AddEditEditQuestionForm>()
+                .RegisterView<IAddEditQuestionView, AddEditQuestionForm>()
+                .RegisterView<ITestView, TestForm>()
                 .RegisterService<LoginPresenter>()
                 .RegisterService<MainTeacherPresenter>()
                 .RegisterService<AddEditQuestionPresenter>()
+                .RegisterService<TestPresenter>()
                 .RegisterInstance(new ApplicationContext())
                 .DoneBuilding();
 
