@@ -5,6 +5,7 @@ using MilitaryFaculty.KnowledgeTest.DataAccessLayer;
 using MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
 using MilitaryFaculty.KnowledgeTest.Presentation.ControllerandContainer;
+using MilitaryFaculty.KnowledgeTest.Presentation.Models;
 using MilitaryFaculty.KnowledgeTest.Presentation.Views;
 using MilitaryFaculty.KnowledgeTest.Services;
 
@@ -17,6 +18,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
         private Question _currentQuestion;
         private int _counter;
         private List<Variant> _currentVariants;
+        private readonly IDictionary<Question, IList<IResultItem>> _resultItems;
         private const int CountOfVariantsOnForm = 5;
 
         public TestPresenter(IApplicationController controller, ITestView view)
@@ -26,6 +28,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             View.LoadForm += LoadTestForm;
             View.NextQuestionChoosed += NextQuestionChoosed;
             View.ContextDispose += ContextDispose;
+            _resultItems = new Dictionary<Question, IList<IResultItem>>();
         }
 
         private void ContextDispose()
@@ -35,10 +38,18 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 
         private void NextQuestionChoosed()
         {
+            GetQuestionAnswer();
+
             _currentQuestion = _currentTest.Questions.ElementAt(++_counter);
             _currentVariants = _currentQuestion.Variants;
 
             SetQuestionOnView();
+        }
+
+        private void GetQuestionAnswer()
+        {
+            var questionAnswers = View.GetQuestionAnswers();
+            _resultItems.Add(_currentQuestion, questionAnswers);
         }
 
         private void LoadTestForm()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MilitaryFaculty.KnowledgeTest.Presentation.Models;
 
 namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
@@ -14,6 +15,6 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
         void SetQuestionCounter(int counter);
         void SetVariantCheckboxVisibility(int shift, bool visible);
         void SetVariantTextboxVisibility(int shift, bool visible);
-        IResultItem GetQuestionAnswer();
+        IList<IResultItem> GetQuestionAnswers();
     }
 }

@@ -57,7 +57,7 @@
     <Compile Include="BasePresenter`2.cs" />
     <Compile Include="ControllerandContainer\IApplicationController.cs" />
     <Compile Include="ControllerandContainer\IContainer.cs" />
-    <Compile Include="Models\CheckboxVariantModel.cs" />
+    <Compile Include="Models\BaseCalculationStrategy.cs" />
     <Compile Include="Models\ICalculationResultStrategy.cs" />
     <Compile Include="Models\IResultItem.cs" />
     <Compile Include="Models\ResultItem.cs" />

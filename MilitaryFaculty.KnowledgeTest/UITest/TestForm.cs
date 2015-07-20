@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using MilitaryFaculty.KnowledgeTest.Presentation.Models;
 using MilitaryFaculty.KnowledgeTest.Presentation.Views;
@@ -8,6 +9,7 @@ namespace UITest
     public partial class TestForm : Form, ITestView
     {
         private readonly ApplicationContext _context;
+        private const int CountOfVariants = 5;
         private const string BeginTextboxForVariant = "tbxVariant";
         private const string BeginCheckBoxForVariant = "chbxVariant";
 
@@ -27,7 +29,7 @@ namespace UITest
 
         public void SetVariantCheckbox(int shift, int variantId)
         {
-            Controls["questionPanel"].Controls[BeginCheckBoxForVariant + shift].Tag = new {VariantId = variantId};
+            Controls["questionPanel"].Controls[BeginCheckBoxForVariant + shift].Tag = new { VariantId = variantId };
         }
 
         public void SetVariantTextbox(int shift, string text)
@@ -55,9 +57,29 @@ namespace UITest
             Controls["questionPanel"].Controls[BeginTextboxForVariant + shift].Visible = visible;
         }
 
-        public IResultItem GetQuestionAnswer()
+        public IList<IResultItem> GetQuestionAnswers()
         {
-            throw new System.NotImplementedException();
+            var variants = new List<IResultItem>();
+            for (var i = 0; i < CountOfVariants; i++)
+            {
+                var variantCheckbox = Controls["questionPanel"].Controls[BeginCheckBoxForVariant + i];
+                if (variantCheckbox.Visible)
+                {
+                    var resultItem = new ResultItem
+                    {
+                        CheckState =
+                            ((CheckBox)variantCheckbox).Checked,
+                        VariantId =
+                            (int)
+                                variantCheckbox.Tag.GetType()
+                                    .GetProperty("VariantId")
+                                    .GetValue(variantCheckbox)
+                    };
+                    variants.Add(resultItem);
+                }
+            }
+
+            return variants;
         }
 
         public new void Show()
