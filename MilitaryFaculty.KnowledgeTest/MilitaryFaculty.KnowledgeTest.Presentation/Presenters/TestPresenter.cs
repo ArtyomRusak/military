@@ -18,7 +18,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
         private Question _currentQuestion;
         private int _counter;
         private List<Variant> _currentVariants;
-        private readonly IDictionary<Question, IList<IResultItem>> _resultItems;
+        private readonly IDictionary<Question, IList<IAnswerItem>> _resultItems;
         private const int CountOfVariantsOnForm = 5;
 
         public TestPresenter(IApplicationController controller, ITestView view)
@@ -28,7 +28,17 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             View.LoadForm += LoadTestForm;
             View.NextQuestionChoosed += NextQuestionChoosed;
             View.ContextDispose += ContextDispose;
-            _resultItems = new Dictionary<Question, IList<IResultItem>>();
+            View.FinishingTest += FinishingTest;
+            _resultItems = new Dictionary<Question, IList<IAnswerItem>>();
+        }
+
+        private void FinishingTest()
+        {
+            GetQuestionAnswer();
+
+            var calculationStrategy = new BaseCalculationStrategy(_currentTest.ResultConfig, _currentTest.TestConfig,
+                _resultItems);
+            calculationStrategy.CalculateResults();
         }
 
         private void ContextDispose()
@@ -39,6 +49,10 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
         private void NextQuestionChoosed()
         {
             GetQuestionAnswer();
+            if (_currentTest.TestConfig.NumberOfQuestions - 2 == _counter)
+            {
+                View.ShowFinishButton();
+            }
 
             _currentQuestion = _currentTest.Questions.ElementAt(++_counter);
             _currentVariants = _currentQuestion.Variants;

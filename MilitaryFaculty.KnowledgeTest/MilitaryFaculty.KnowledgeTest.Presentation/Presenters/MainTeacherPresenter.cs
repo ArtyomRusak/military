@@ -83,6 +83,10 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             View.SetDatasourcesToNull();
             View.SetNonBindedQuestions(_questionsToSelect);
             View.SetBindedQuestions(_selectedQuestions);
+            if (_singletonTest.TestConfig != null)
+            {
+                View.SetNumberOfQuestions(_singletonTest.TestConfig.NumberOfQuestions);
+            }
 
             unitOfWork.Commit();
         }
@@ -102,6 +106,17 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
                         return;
                     }
 
+                    if (_singletonTest.TestConfig == null)
+                    {
+                        _singletonTest.TestConfig = new TestConfig
+                        {
+                            NumberOfQuestions = 15
+                        };
+                    }
+                    else
+                    {
+                        _singletonTest.TestConfig.NumberOfQuestions = View.GetNumberOfQuestions();
+                    }
                     _context.SaveChanges();
                     View.ShowMessage("Сохранение прошло успешно.", string.Empty);
                 }

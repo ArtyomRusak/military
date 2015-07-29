@@ -41,8 +41,16 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
         {
             var mainTest = new Test { Name = "MainTest" };
             var mainTestConfiguration = new TestConfig { NumberOfQuestions = 15, Test = mainTest };
+            var resultTestConfiguration = new ResultConfig
+            {
+                FullAnswer = true,
+                PercentOfRightAnswers = 70,
+                Description = "Базовый",
+            };
+            mainTest.ResultConfig = resultTestConfiguration;
             context.Tests.Add(mainTest);
             context.TestConfigs.Add(mainTestConfiguration);
+            context.ResultConfigs.Add(resultTestConfiguration);
             context.SaveChanges();
 
             var questions = new List<Question>()

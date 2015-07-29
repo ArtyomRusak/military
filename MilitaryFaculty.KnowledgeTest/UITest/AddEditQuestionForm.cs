@@ -54,7 +54,11 @@ namespace UITest
                     }
                 }
                 var isRight = ((CheckBox)Controls[BeginCheckBoxForVariant + i]).Checked;
-                checker = isRight;
+                if (isRight)
+                {
+                    checker = true;
+                }
+
                 if (text == "")
                 {
                     return null;

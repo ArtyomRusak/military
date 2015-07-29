@@ -2,7 +2,9 @@
 {
     public interface IResultItem
     {
-        int VariantId { get; set; }
-        bool CheckState { get; set; }
+        int CountOfRightAnswers { get; set; }
+        int CountOfWrongAnswers { get; set; }
+        bool IsRight { get; set; }
+        int Koefficient { get; set; }
     }
 }

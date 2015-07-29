@@ -11,6 +11,7 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Configurations
             Property(e => e.Name).IsRequired().HasMaxLength(50);
             HasMany(e => e.Questions).WithMany(e => e.Tests);
             HasRequired(mod => mod.TestConfig).WithRequiredPrincipal(mod => mod.Test);
+            HasOptional(mod => mod.ResultConfig).WithMany(mod => mod.Tests).WillCascadeOnDelete(false);
         }
     }
 }

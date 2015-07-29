@@ -21,9 +21,11 @@ namespace UITest
             this.Load += (sender, args) => Invoke(LoadForm);
             this.Closed += (sender, args) => Invoke(ContextDispose);
             btnNextQuestion.Click += (sender, args) => Invoke(NextQuestionChoosed);
+            btnFinishTest.Click += (sender, args) => Invoke(FinishingTest);
         }
 
         public event Action NextQuestionChoosed;
+        public event Action FinishingTest;
         public event Action LoadForm;
         public event Action ContextDispose;
 
@@ -57,23 +59,22 @@ namespace UITest
             Controls["questionPanel"].Controls[BeginTextboxForVariant + shift].Visible = visible;
         }
 
-        public IList<IResultItem> GetQuestionAnswers()
+        public IList<IAnswerItem> GetQuestionAnswers()
         {
-            var variants = new List<IResultItem>();
+            var variants = new List<IAnswerItem>();
             for (var i = 0; i < CountOfVariants; i++)
             {
-                var variantCheckbox = Controls["questionPanel"].Controls[BeginCheckBoxForVariant + i];
+                var variantCheckbox = Controls["questionPanel"].Controls[BeginCheckBoxForVariant + (i + 1)];
                 if (variantCheckbox.Visible)
                 {
-                    var resultItem = new ResultItem
+                    var resultItem = new AnswerItem
                     {
-                        CheckState =
-                            ((CheckBox)variantCheckbox).Checked,
+                        CheckState = ((CheckBox)variantCheckbox).Checked,
                         VariantId =
                             (int)
                                 variantCheckbox.Tag.GetType()
                                     .GetProperty("VariantId")
-                                    .GetValue(variantCheckbox)
+                                    .GetValue(variantCheckbox.Tag)
                     };
                     variants.Add(resultItem);
                 }
@@ -82,10 +83,20 @@ namespace UITest
             return variants;
         }
 
+        public void ShowFinishButton()
+        {
+            btnFinishTest.Visible = true;
+        }
+
         public new void Show()
         {
             _context.MainForm = this;
             base.Show();
+        }
+
+        public void ShowMessage(string message, string caption)
+        {
+            MessageBox.Show(message, caption);
         }
 
         public void Invoke(Action action)

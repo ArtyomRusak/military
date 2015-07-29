@@ -11,6 +11,7 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Configurations
             Property(e => e.Mark).IsRequired();
             Property(e => e.Date).IsRequired();
             HasRequired(e => e.Student).WithMany(e => e.Results).HasForeignKey(e => e.StudentId);
+            HasOptional(e => e.ResultConfig);
         }
     }
 }

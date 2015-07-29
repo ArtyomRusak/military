@@ -42,11 +42,13 @@
             this.tbxVariant1 = new System.Windows.Forms.TextBox();
             this.tbxQuestionText = new System.Windows.Forms.TextBox();
             this.lblQuestionCounter = new System.Windows.Forms.Label();
+            this.btnFinishTest = new System.Windows.Forms.Button();
             this.questionPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // questionPanel
             // 
+            this.questionPanel.Controls.Add(this.btnFinishTest);
             this.questionPanel.Controls.Add(this.btnNextQuestion);
             this.questionPanel.Controls.Add(this.chbxVariant5);
             this.questionPanel.Controls.Add(this.chbxVariant4);
@@ -198,6 +200,17 @@
             this.lblQuestionCounter.TabIndex = 31;
             this.lblQuestionCounter.Text = "label1";
             // 
+            // btnFinishTest
+            // 
+            this.btnFinishTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnFinishTest.Location = new System.Drawing.Point(258, 333);
+            this.btnFinishTest.Name = "btnFinishTest";
+            this.btnFinishTest.Size = new System.Drawing.Size(175, 66);
+            this.btnFinishTest.TabIndex = 40;
+            this.btnFinishTest.Text = "Закончить тест";
+            this.btnFinishTest.UseVisualStyleBackColor = true;
+            this.btnFinishTest.Visible = false;
+            // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,6 +244,7 @@
         private System.Windows.Forms.TextBox tbxVariant1;
         private System.Windows.Forms.TextBox tbxQuestionText;
         private System.Windows.Forms.Label lblQuestionCounter;
+        private System.Windows.Forms.Button btnFinishTest;
 
 
     }

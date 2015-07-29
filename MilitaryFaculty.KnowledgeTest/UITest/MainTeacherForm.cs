@@ -25,6 +25,7 @@ namespace UITest
             this.FormClosed += (sender, args) => this.Invoke(CloseFromDisposeContextAndOpenLoginForm);
             this.Load += (sender, args) => this.Invoke(LoadQuestions);
             _dgvNonBindedQuestions.CellDoubleClick += this.GetQuestion;
+            _dgvBindedQuestions.CellDoubleClick += this.GetQuestion;
             _addQuestionToTestBtn.Click += (sender, args) => this.Invoke(AddQuestionToTest);
             _removeQuestionFromTestBtn.Click += (sender, args) => this.Invoke(RemoveQuestionFromTest);
         }
@@ -77,6 +78,16 @@ namespace UITest
             var confirm = MessageBox.Show(Resources.SaveChangesToTestString, string.Empty,
                 MessageBoxButtons.YesNo);
             return confirm.ToString() == "Yes";
+        }
+
+        public void SetNumberOfQuestions(int numberOfQuestions)
+        {
+            _nmbxNumberOfQuestions.Value = numberOfQuestions;
+        }
+
+        public int GetNumberOfQuestions()
+        {
+            return (int) _nmbxNumberOfQuestions.Value;
         }
 
         public new void Show()

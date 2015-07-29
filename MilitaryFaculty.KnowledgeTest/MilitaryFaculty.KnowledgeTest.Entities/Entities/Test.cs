@@ -12,5 +12,6 @@ namespace MilitaryFaculty.KnowledgeTest.Entities.Entities
         public string Name { get; set; }
         public virtual List<Question> Questions { get; set; }
         public virtual TestConfig TestConfig { get; set; }
+        public virtual ResultConfig ResultConfig { get; set; }
     }
 }

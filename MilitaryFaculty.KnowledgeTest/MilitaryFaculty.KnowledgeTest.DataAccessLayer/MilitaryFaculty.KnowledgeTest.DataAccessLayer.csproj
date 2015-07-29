@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EFContext\Configurations\QuestionConfiguration.cs" />
+    <Compile Include="EFContext\Configurations\ResultConfigConfiguration.cs" />
     <Compile Include="EFContext\Configurations\ResultConfiguration.cs" />
     <Compile Include="EFContext\Configurations\SecurityConfiguration.cs" />
     <Compile Include="EFContext\Configurations\StudentConfiguration.cs" />
@@ -89,6 +90,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

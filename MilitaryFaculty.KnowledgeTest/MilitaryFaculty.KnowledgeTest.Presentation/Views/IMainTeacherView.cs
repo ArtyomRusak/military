@@ -29,5 +29,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
         Question GetSelectedRowFromBindedQuestions();
 
         bool ViewQuestionToConfirm();
+        void SetNumberOfQuestions(int numberOfQuestions);
+        int GetNumberOfQuestions();
     }
 }

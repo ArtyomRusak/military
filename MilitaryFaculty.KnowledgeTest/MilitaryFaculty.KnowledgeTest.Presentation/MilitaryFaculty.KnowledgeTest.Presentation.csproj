@@ -55,10 +55,11 @@
     <Compile Include="ApplicationController.cs" />
     <Compile Include="BasePresenter`1.cs" />
     <Compile Include="BasePresenter`2.cs" />
-    <Compile Include="ControllerandContainer\IApplicationController.cs" />
-    <Compile Include="ControllerandContainer\IContainer.cs" />
+    <Compile Include="ControllerAndContainer\IApplicationController.cs" />
+    <Compile Include="ControllerAndContainer\IContainer.cs" />
     <Compile Include="Models\BaseCalculationStrategy.cs" />
-    <Compile Include="Models\ICalculationResultStrategy.cs" />
+    <Compile Include="Models\IAnswerItem.cs" />
+    <Compile Include="Models\AnswerItem.cs" />
     <Compile Include="Models\IResultItem.cs" />
     <Compile Include="Models\ResultItem.cs" />
     <Compile Include="PresenterInterfaces\IPresenter.cs" />
