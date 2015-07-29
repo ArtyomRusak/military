@@ -52,6 +52,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="QuestionService.cs" />
+    <Compile Include="ResultService.cs" />
+    <Compile Include="StudentService.cs" />
     <Compile Include="TestService.cs" />
     <Compile Include="VariantService.cs" />
   </ItemGroup>

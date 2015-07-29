@@ -11,12 +11,13 @@ using MilitaryFaculty.KnowledgeTest.Services;
 
 namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 {
-    public class TestPresenter : BasePresenter<ITestView>
+    public class TestPresenter : BasePresenter<ITestView, TestDataModel>
     {
         private readonly TestContext _context;
         private Test _currentTest;
         private Question _currentQuestion;
         private int _counter;
+        private TestDataModel _testDataModel;
         private List<Variant> _currentVariants;
         private readonly IDictionary<Question, IList<IAnswerItem>> _resultItems;
         private const int CountOfVariantsOnForm = 5;
@@ -38,7 +39,12 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 
             var calculationStrategy = new BaseCalculationStrategy(_currentTest.ResultConfig, _currentTest.TestConfig,
                 _resultItems);
-            calculationStrategy.CalculateResults();
+            var result = calculationStrategy.GetResult();
+            result.StudentId = _testDataModel.StudentId;
+
+            var unitOfWork = new UnitOfWork(_context);
+            var resultService = new ResultService(unitOfWork, unitOfWork);
+            resultService.AddResult(result);
         }
 
         private void ContextDispose()
@@ -108,6 +114,12 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             var sequence = Enumerable.Range(0, count).OrderBy(n => rnd.Next());
             var result = sequence.ToList();
             return result;
+        }
+
+        public override void Run(TestDataModel arg)
+        {
+            _testDataModel = arg;
+            View.Show();
         }
     }
 }

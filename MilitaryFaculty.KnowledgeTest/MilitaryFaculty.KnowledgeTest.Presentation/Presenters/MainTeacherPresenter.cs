@@ -48,9 +48,9 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 
             _selectedQuestions.Remove(question);
             _questionsToSelect.Add(question);
-            View.SetDatasourcesToNull();
             View.SetBindedQuestions(_selectedQuestions);
             View.SetNonBindedQuestions(_questionsToSelect);
+            View.SetDatasourcesToNull();
         }
 
         private void AddQuestionToTest()
@@ -60,11 +60,9 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 
             _selectedQuestions.Add(question);
             _questionsToSelect.Remove(question);
-            View.SetDatasourcesToNull();
             View.SetBindedQuestions(_selectedQuestions);
             View.SetNonBindedQuestions(_questionsToSelect);
-
-            //LoadAllQuestions();
+            View.SetDatasourcesToNull();
         }
 
         private void OpenQuestionFormForEdit(Question question)
@@ -80,9 +78,9 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             var questionService = new QuestionService(unitOfWork, unitOfWork);
             _questionsToSelect = questionService.GetAllNonBindedQuestions();
             _selectedQuestions = questionService.GetAllBindedQuestions();
-            View.SetDatasourcesToNull();
             View.SetNonBindedQuestions(_questionsToSelect);
             View.SetBindedQuestions(_selectedQuestions);
+            View.SetDatasourcesToNull();
             if (_singletonTest.TestConfig != null)
             {
                 View.SetNumberOfQuestions(_singletonTest.TestConfig.NumberOfQuestions);
@@ -110,7 +108,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
                     {
                         _singletonTest.TestConfig = new TestConfig
                         {
-                            NumberOfQuestions = 15
+                            NumberOfQuestions = View.GetNumberOfQuestions()
                         };
                     }
                     else
@@ -123,7 +121,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
                 catch (Exception e)
                 {
                     View.ShowMessage("При сохранении возникла ошибка.", string.Empty);
-                }   
+                }
             }
         }
 

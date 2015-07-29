@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MilitaryFaculty.KnowledgeTest.Entities.Entities;
 
@@ -20,7 +21,24 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Models
             this.Results = new List<IResultItem>();
         }
 
-        public void CalculateResults()
+        public Result GetResult()
+        {
+            this.CalculateResults();
+
+            var result = new Result
+            {
+                Date = DateTime.Now,
+                CountOfRightAnswers = this.Results.Count(mod => mod.IsRight),
+                CountOfWrongAnswers = this.Results.Count(mod => mod.IsRight == false),
+                Mark = this.Results.Sum(mod => mod.Koefficient)/this.TestConfig.NumberOfQuestions,
+                ResultConfig = this.ResultConfig
+            };
+            result.Success = ((result.CountOfRightAnswers / this.TestConfig.NumberOfQuestions) * 100) > this.ResultConfig.PercentOfRightAnswers;
+
+            return result;
+        }
+
+        private void CalculateResults()
         {
             foreach (var answer in Answers)
             {

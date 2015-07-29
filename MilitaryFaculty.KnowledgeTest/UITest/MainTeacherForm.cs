@@ -46,8 +46,10 @@ namespace UITest
 
         public void SetDatasourcesToNull()
         {
-            _dgvNonBindedQuestions.DataSource = null;
-            _dgvBindedQuestions.DataSource = null;
+            //_dgvNonBindedQuestions.DataSource = null;
+            //_dgvBindedQuestions.DataSource = null;
+            _dgvBindedQuestions.Refresh();
+            _dgvNonBindedQuestions.Refresh();
         }
 
         public void SetBindedQuestions(IList<Question> questions)

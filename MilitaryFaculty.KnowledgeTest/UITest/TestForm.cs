@@ -86,6 +86,7 @@ namespace UITest
         public void ShowFinishButton()
         {
             btnFinishTest.Visible = true;
+            btnNextQuestion.Visible = false;
         }
 
         public new void Show()

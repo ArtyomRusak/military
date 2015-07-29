@@ -41,12 +41,16 @@
   <ItemGroup>
     <Compile Include="Exceptions\MembershipServiceException.cs" />
     <Compile Include="Exceptions\QuestionServiceException.cs" />
+    <Compile Include="Exceptions\ResultServiceException.cs" />
     <Compile Include="Exceptions\ServiceException.cs" />
+    <Compile Include="Exceptions\StudentServiceException.cs" />
     <Compile Include="Exceptions\TestServiceException.cs" />
     <Compile Include="Exceptions\VariantServiceException.cs" />
     <Compile Include="IMembershipService.cs" />
     <Compile Include="IQuestionService.cs" />
+    <Compile Include="IResultService.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="IStudentService.cs" />
     <Compile Include="ITestService.cs" />
     <Compile Include="IVariantService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
