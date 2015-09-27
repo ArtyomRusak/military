@@ -41,20 +41,32 @@ namespace UITest
 
         public void SetNonBindedQuestions(IList<Question> nonBindedQuestions)
         {
-            _dgvNonBindedQuestions.DataSource = nonBindedQuestions;
+            //_dgvNonBindedQuestions.DataSource = nonBindedQuestions;
+            foreach (var question in nonBindedQuestions)
+            {
+                this.nonBindedQuestionSource.Add(question);
+            }
         }
 
         public void SetDatasourcesToNull()
         {
+            this.nonBindedQuestionSource.Clear();
+            this.bindedQuestionSource.Clear();
             //_dgvNonBindedQuestions.DataSource = null;
             //_dgvBindedQuestions.DataSource = null;
-            _dgvBindedQuestions.Refresh();
-            _dgvNonBindedQuestions.Refresh();
+            //_dgvNonBindedQuestions.Refresh();
+            //_dgvBindedQuestions.Refresh();
+            //_dgvBindedQuestions.Refresh();
+            //_dgvNonBindedQuestions.Refresh();
         }
 
-        public void SetBindedQuestions(IList<Question> questions)
+        public void SetBindedQuestions(IList<Question> bindedQuestions)
         {
-            _dgvBindedQuestions.DataSource = questions;
+            //_dgvBindedQuestions.DataSource = bindedQuestions;
+            foreach (var question in bindedQuestions)
+            {
+                this.bindedQuestionSource.Add(question);
+            }
         }
 
         public void GetQuestion(object sender, DataGridViewCellEventArgs args)
@@ -89,7 +101,28 @@ namespace UITest
 
         public int GetNumberOfQuestions()
         {
-            return (int) _nmbxNumberOfQuestions.Value;
+            return (int)_nmbxNumberOfQuestions.Value;
+        }
+
+        public void AddNonBindedQuestion(Question question)
+        {
+            this.nonBindedQuestionSource.Add(question);
+            //this._dgvNonBindedQuestions.Rows.Add(question);
+        }
+
+        public void RemoveBindedQuestion(Question question)
+        {
+            this.bindedQuestionSource.Remove(question);
+        }
+
+        public void AddBindedQuestion(Question question)
+        {
+            this.bindedQuestionSource.Add(question);
+        }
+
+        public void RemoveNonBindedQuestion(Question question)
+        {
+            this.nonBindedQuestionSource.Remove(question);
         }
 
         public new void Show()
@@ -109,6 +142,11 @@ namespace UITest
             {
                 action();
             }
+        }
+
+        private void _dgvNonBindedQuestions_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            var a = e.Context;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
 
         void SetDatasourcesToNull();
 
-        void SetBindedQuestions(IList<Question> questions);
+        void SetBindedQuestions(IList<Question> bindedQuestions);
 
         void GetQuestion(object sender, DataGridViewCellEventArgs args);
 
@@ -31,5 +31,9 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
         bool ViewQuestionToConfirm();
         void SetNumberOfQuestions(int numberOfQuestions);
         int GetNumberOfQuestions();
+        void AddNonBindedQuestion(Question question);
+        void RemoveBindedQuestion(Question question);
+        void AddBindedQuestion(Question question);
+        void RemoveNonBindedQuestion(Question question);
     }
 }

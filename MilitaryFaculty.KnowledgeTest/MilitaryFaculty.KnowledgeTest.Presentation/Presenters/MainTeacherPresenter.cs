@@ -48,9 +48,13 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 
             _selectedQuestions.Remove(question);
             _questionsToSelect.Add(question);
-            View.SetBindedQuestions(_selectedQuestions);
-            View.SetNonBindedQuestions(_questionsToSelect);
-            View.SetDatasourcesToNull();
+            View.AddNonBindedQuestion(question);
+            View.RemoveBindedQuestion(question);
+            //View.SetDatasourcesToNull();
+            //View.SetBindedQuestions(_selectedQuestions);
+            //View.SetNonBindedQuestions(_questionsToSelect);
+
+            //_context.SaveChanges();
         }
 
         private void AddQuestionToTest()
@@ -60,9 +64,13 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 
             _selectedQuestions.Add(question);
             _questionsToSelect.Remove(question);
-            View.SetBindedQuestions(_selectedQuestions);
-            View.SetNonBindedQuestions(_questionsToSelect);
-            View.SetDatasourcesToNull();
+            View.AddBindedQuestion(question);
+            View.RemoveNonBindedQuestion(question);
+            //View.SetDatasourcesToNull();
+            //View.SetBindedQuestions(_selectedQuestions);
+            //View.SetNonBindedQuestions(_questionsToSelect);
+
+            //_context.SaveChanges();
         }
 
         private void OpenQuestionFormForEdit(Question question)
@@ -78,9 +86,9 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             var questionService = new QuestionService(unitOfWork, unitOfWork);
             _questionsToSelect = questionService.GetAllNonBindedQuestions();
             _selectedQuestions = questionService.GetAllBindedQuestions();
+            //View.SetDatasourcesToNull();
             View.SetNonBindedQuestions(_questionsToSelect);
             View.SetBindedQuestions(_selectedQuestions);
-            View.SetDatasourcesToNull();
             if (_singletonTest.TestConfig != null)
             {
                 View.SetNumberOfQuestions(_singletonTest.TestConfig.NumberOfQuestions);
@@ -139,6 +147,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
                 _context = new TestContext(Resources.ConnectionString);
             }
 
+            View.SetDatasourcesToNull();
             LoadAllQuestions();
         }
 
