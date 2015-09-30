@@ -21,11 +21,13 @@ namespace UITest
                 .RegisterView<ILoginView, LoginForm>()
                 .RegisterView<IMainTeacherView, MainTeacherForm>()
                 .RegisterView<IAddEditQuestionView, AddEditQuestionForm>()
+                .RegisterView<ILoginStudentView, LoginStudentForm>()
                 .RegisterView<ITestView, TestForm>()
                 .RegisterService<LoginPresenter>()
                 .RegisterService<MainTeacherPresenter>()
                 .RegisterService<AddEditQuestionPresenter>()
                 .RegisterService<TestPresenter>()
+                .RegisterService<LoginStudentFormPresenter>()
                 .RegisterInstance(new ApplicationContext())
                 .DoneBuilding();
 

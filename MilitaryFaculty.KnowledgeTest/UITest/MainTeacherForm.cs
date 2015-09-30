@@ -143,10 +143,5 @@ namespace UITest
                 action();
             }
         }
-
-        private void _dgvNonBindedQuestions_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            var a = e.Context;
-        }
     }
 }

@@ -55,21 +55,21 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
 
             var questions = new List<Question>()
             {
-                new Question {Description = "Edit text."}, 
-                new Question {Description = "Edit text."},
-                new Question {Description = "Edit text."},
-                new Question {Description = "Edit text."},
-                new Question {Description = "Edit text."},
-                new Question {Description = "Edit text."},
-                new Question {Description = "Edit text."},
-                new Question {Description = "Edit text."},
-                new Question {Description = "Edit text."},
-                new Question {Description = "Edit text."},
-                new Question {Description = "Edit text."},
-                new Question {Description = "Edit text."},
-                new Question {Description = "Edit text."},
-                new Question {Description = "Edit text."},
-                new Question {Description = "Edit text."},
+                new Question {Description = "Edit text1."}, 
+                new Question {Description = "Edit text2."},
+                new Question {Description = "Edit text3."},
+                new Question {Description = "Edit text4."},
+                new Question {Description = "Edit text5."},
+                new Question {Description = "Edit text6."},
+                new Question {Description = "Edit text7."},
+                new Question {Description = "Edit text8."},
+                new Question {Description = "Edit text9."},
+                new Question {Description = "Edit text10."},
+                new Question {Description = "Edit text11."},
+                new Question {Description = "Edit text12."},
+                new Question {Description = "Edit text13."},
+                new Question {Description = "Edit text14."},
+                new Question {Description = "Edit text15."},
             };
             //questions.ForEach(e => context.Questions.Add(e));
             questions.ForEach(delegate(Question question)
@@ -84,11 +84,11 @@ namespace MilitaryFaculty.KnowledgeTest.DataAccessLayer.EFContext.Initializers
             {
                 new List<Variant>()
                 {
-                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text"},
-                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text"},
-                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text"},
-                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text"},
-                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text"},
+                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text1"},
+                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text2"},
+                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text3"},
+                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text4"},
+                    new Variant {QuestionId = question.Id, IsRight = false, Description = "Set text5"},
                 }.ForEach(e => context.Variants.Add(e));
             }
 

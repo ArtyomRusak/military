@@ -53,6 +53,10 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             _context.Dispose();
         }
 
+        /// <summary>
+        /// Runs the specified argument.
+        /// </summary>
+        /// <param name="arg">if set to <c>true</c> [argument].</param>
         public void Run(bool arg)
         {
             View.IsStartPoint = arg;

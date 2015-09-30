@@ -26,6 +26,7 @@ namespace MilitaryFaculty.KnowledgeTest.Services
         {
             var studentRepository = _factoryOfRepositries.GetStudentRepository();
 
+            StudentService.UpperNameAndSurnameForStudent(student);
             studentRepository.Add(student);
 
             try
@@ -42,7 +43,7 @@ namespace MilitaryFaculty.KnowledgeTest.Services
 
         public Student AddStudent(string name, string surname, int platoon)
         {
-            var student = new Student { Name = name, Surname = surname, Platoon = platoon };
+            var student = new Student { Name = name.ToUpperInvariant(), Surname = surname.ToUpperInvariant(), Platoon = platoon };
             student = AddStudent(student);
             return student;
         }
@@ -62,7 +63,12 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             }
         }
 
-        public Student CheckStudentForExisting(string name, string surname, int platoon)
+        public Student GetStudent(Student student)
+        {
+            return this.GetStudent(student.Name, student.Surname, student.Platoon);
+        }
+
+        public Student GetStudent(string name, string surname, int platoon)
         {
             var studentRepository = _factoryOfRepositries.GetStudentRepository();
 
@@ -70,15 +76,21 @@ namespace MilitaryFaculty.KnowledgeTest.Services
             {
                 var student =
                     studentRepository.All()
-                        .ToList().FirstOrDefault(mod => String.Equals(mod.Name, name, StringComparison.CurrentCultureIgnoreCase) &&
-                                                        String.Equals(mod.Surname, surname, StringComparison.CurrentCultureIgnoreCase) &&
-                                                        mod.Platoon == platoon);
+                        .ToList()
+                        .FirstOrDefault(
+                            mod => String.Equals(mod.Name, name.ToUpperInvariant()) && String.Equals(mod.Surname, surname.ToUpperInvariant()) && mod.Platoon == platoon);
                 return student;
             }
             catch (Exception ex)
             {
                 throw new StudentServiceException(ex);
             }
+        }
+
+        private static void UpperNameAndSurnameForStudent(Student student)
+        {
+            student.Name = student.Name.ToUpperInvariant();
+            student.Surname = student.Surname.ToUpperInvariant();
         }
     }
 }

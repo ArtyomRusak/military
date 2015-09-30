@@ -34,7 +34,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             {
                 var unitOfWork = new UnitOfWork(_context);
                 var studentService = new StudentService(unitOfWork, unitOfWork);
-                var student = studentService.CheckStudentForExisting(studentData.Name, studentData.Surname, studentData.Platoon);
+                var student = studentService.GetStudent(studentData.Name, studentData.Surname, studentData.Platoon);
                 if (student != null)
                 {
                     unitOfWork.Commit();
