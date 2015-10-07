@@ -7,32 +7,44 @@ namespace UITest
 {
     public partial class LoginStudentForm : Form, ILoginStudentView
     {
-        public LoginStudentForm()
+        private readonly ApplicationContext _context;
+
+        public LoginStudentForm(ApplicationContext context)
         {
+            _context = context;
             InitializeComponent();
 
-            this.Closed += (sender, args) => this.Invoke(CloseFormAndDisposeContext);
-            this.btnAccess.Click += (sender, args) => this.Invoke(AccessTest);
+            btnStartTest.Click += (sender, args) => Invoke(this.StartTest);
+            this.Closed += (sender, args) => Invoke(this.ContextDispose);
         }
+
+        public event Action StartTest;
+        public event Action ContextDispose;
 
         public void ShowMessage(string message, string caption)
         {
             MessageBox.Show(message, caption);
         }
 
-        public Student GetStudentFormData()
+        public Student GetStudentData()
         {
-            var result = new Student
+            int platoon;
+            int.TryParse(tbxGroupNumber.Text, out platoon);
+            var student = new Student
             {
-                Name = this.tbxName.Text,
-                Surname = this.tbxSurname.Text,
-                Platoon = (int)this.numGroup.Value
+                Name = tbxName.Text,
+                Surname = tbxSurname.Text,
+                Platoon = platoon
             };
-            return result;
+
+            return student;
         }
 
-        public event Action AccessTest;
-        public event Action CloseFormAndDisposeContext;
+        public new void Show()
+        {
+            _context.MainForm = this;
+            base.Show();
+        }
 
         public void Invoke(Action action)
         {

@@ -44,7 +44,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 
         public void LoginAsStudent()
         {
-            Controller.Run<TestPresenter>();
+            Controller.Run<StudentFormPresenter>();
             View.Close();
         }
 

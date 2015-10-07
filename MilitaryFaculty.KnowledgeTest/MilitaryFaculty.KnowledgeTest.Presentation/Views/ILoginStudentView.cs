@@ -5,9 +5,9 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Views
 {
     public interface ILoginStudentView : IMessagableView
     {
-        Student GetStudentFormData();
+        Student GetStudentData();
 
-        event Action AccessTest;
-        event Action CloseFormAndDisposeContext;
+        event Action StartTest;
+        event Action ContextDispose;
     }
 }

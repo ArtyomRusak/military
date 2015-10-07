@@ -67,7 +67,6 @@
     <Compile Include="PresenterInterfaces\IPresenter`1.cs" />
     <Compile Include="Presenters\AddEditQuestionPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
-    <Compile Include="Presenters\LoginStudentFormPresenter.cs" />
     <Compile Include="Presenters\MainTeacherPresenter.cs" />
     <Compile Include="Presenters\StudentFormPresenter.cs" />
     <Compile Include="Presenters\TestPresenter.cs" />
@@ -77,11 +76,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\IAddEditQuestionView.cs" />
-    <Compile Include="Views\ILoginStudentView.cs" />
     <Compile Include="Views\ILoginView.cs" />
     <Compile Include="Views\IMainTeacherView.cs" />
     <Compile Include="Views\IMessagableView.cs" />
-    <Compile Include="Views\IStudentView.cs" />
+    <Compile Include="Views\ILoginStudentView.cs" />
     <Compile Include="Views\ITestView.cs" />
     <Compile Include="Views\IView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -27,7 +27,7 @@ namespace UITest
                 .RegisterService<MainTeacherPresenter>()
                 .RegisterService<AddEditQuestionPresenter>()
                 .RegisterService<TestPresenter>()
-                .RegisterService<LoginStudentFormPresenter>()
+                .RegisterService<StudentFormPresenter>()
                 .RegisterInstance(new ApplicationContext())
                 .DoneBuilding();
 

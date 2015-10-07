@@ -45,6 +45,7 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             var unitOfWork = new UnitOfWork(_context);
             var resultService = new ResultService(unitOfWork, unitOfWork);
             resultService.AddResult(result);
+            unitOfWork.Commit();
         }
 
         private void ContextDispose()

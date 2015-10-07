@@ -9,11 +9,11 @@ using MilitaryFaculty.KnowledgeTest.Services;
 
 namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
 {
-    public class StudentFormPresenter : BasePresenter<IStudentView>
+    public class StudentFormPresenter : BasePresenter<ILoginStudentView>
     {
         private readonly TestContext _context;
 
-        public StudentFormPresenter(IApplicationController controller, IStudentView view)
+        public StudentFormPresenter(IApplicationController controller, ILoginStudentView view)
             : base(controller, view)
         {
             _context = new TestContext(Resources.ConnectionString);
@@ -34,18 +34,18 @@ namespace MilitaryFaculty.KnowledgeTest.Presentation.Presenters
             {
                 var unitOfWork = new UnitOfWork(_context);
                 var studentService = new StudentService(unitOfWork, unitOfWork);
-                var student = studentService.GetStudent(studentData.Name, studentData.Surname, studentData.Platoon);
+                var student = studentService.GetStudent(studentData);
                 if (student != null)
                 {
                     unitOfWork.Commit();
                     View.Close();
-                    Controller.Run<TestPresenter, TestDataModel>(new TestDataModel { StudentId = student.Id, TestId = 1 });
+                    Controller.Run<TestPresenter, TestDataModel>(new TestDataModel { StudentId = student.Id });
                 }
                 else
                 {
                     student = studentService.AddStudent(studentData);
                     unitOfWork.Commit();
-                    Controller.Run<TestPresenter, TestDataModel>(new TestDataModel { StudentId = student.Id, TestId = 1 });
+                    Controller.Run<TestPresenter, TestDataModel>(new TestDataModel { StudentId = student.Id });
                 }
             }
         }
