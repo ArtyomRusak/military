@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using MilitaryFaculty.KnowledgeTest.Presentation;
 using MilitaryFaculty.KnowledgeTest.Presentation.Presenters;
@@ -16,6 +17,8 @@ namespace UITest
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            AppDomain.CurrentDomain.SetData("DataDirectory", Path.GetDirectoryName(Application.ExecutablePath));
 
             var controller = new ApplicationController(new AutofacInjectAdapter())
                 .RegisterView<ILoginView, LoginForm>()
